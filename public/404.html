@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="description" content="Página no encontrada — Foodly" />
+  <meta name="theme-color" content="#79005D" />
+  <title>404 — Foodly</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <style>
+    :root {
+      --purple: #79005D;
+      --purple-dark: #5C0047;
+      --purple-light: #9B2B7F;
+      --purple-bg: #FAF0F6;
+      --purple-tint: #F5E5EF;
+      --green: #14C45D;
+      --ink: #1A1A1A;
+      --muted: #5A5A5A;
+      --bg: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      min-height: 100%;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: linear-gradient(180deg, var(--purple-bg) 0%, var(--bg) 60%);
+      padding: 24px;
+    }
+    .card {
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      padding: 40px 28px;
+    }
+    .glyph {
+      font-size: 72px;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--purple);
+      letter-spacing: -2px;
+      margin: 0 0 12px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: var(--ink);
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+    .cta {
+      display: inline-block;
+      background: var(--purple);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cta:hover {
+      background: var(--purple-dark);
+      transform: translateY(-1px);
+    }
+    .cta:active {
+      transform: translateY(0);
+    }
+    .logo {
+      width: min(180px, 50vw);
+      height: auto;
+      object-fit: contain;
+      margin: 0 auto 20px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img src="/logo.png" alt="Foodly" class="logo" />
+    <p class="glyph">404</p>
+    <h1>Esta página no existe</h1>
+    <p>La URL que buscás no se encuentra en Foodly. Podés volver al inicio o explorar lo que tenemos para vos.</p>
+    <a class="cta" href="/">Volver al inicio</a>
+  </main>
+</body>
+</html>

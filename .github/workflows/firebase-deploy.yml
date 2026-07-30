@@ -1,0 +1,50 @@
+name: Deploy Foodly Landing — foodly.solutions
+
+# **Auto-deploy del landing a Firebase Hosting (2026-05-19).**
+#
+# **Por qué este workflow existe:** hasta ahora `foodly_landing` se
+# deployaba a mano con `firebase deploy --only hosting:landing`. Eso causó
+# que el sweep 3%→1% de comisión (task #49) llegara al repo pero NUNCA al
+# sitio en vivo — durante semanas `foodly.solutions` siguió mostrando
+# "3% commission model" mientras el código ya decía "1% optional
+# commission". Con este workflow, cualquier merge a `main` que toque la
+# landing dispara el deploy automáticamente y el drift desaparece.
+#
+# **Patrón espejado:** sigue el mismo shape que
+# `foodly_world/.github/workflows/flutter-web-menu-deploy.yml` para
+# menu.foodly.solutions. Diferencia: el landing es HTML estático puro
+# (no Flutter), así que NO hay paso `flutter build web` — vamos directo
+# del checkout al deploy de Firebase.
+#
+# **Secrets requeridos en el repo:**
+#   - `FIREBASE_TOKEN` — generado con `firebase login:ci` desde local.
+#     El mismo token sirve si ya lo usás para el deploy del menu.
+#
+# **Cache-Control:** el `firebase.json` ya tiene
+# `Cache-Control: no-cache, no-store, must-revalidate` para HTMLs, así
+# que el cambio se ve INMEDIATO al usuario sin esperar invalidación de
+# CDN. No hace falta paso extra de cache-bust.
+
+on:
+  push:
+    branches: [main]
+    # Solo dispará el deploy cuando cambien archivos que efectivamente
+    # afectan el contenido servido. Esto evita deploys ruidosos por
+    # ediciones a README, .github/, .gitignore, etc.
+    paths:
+      - 'public/**'
+      - 'firebase.json'
+      - '.github/workflows/firebase-deploy.yml'
+  workflow_dispatch:  # Permite trigger manual desde la UI de Actions.
+
+jobs:
+  deploy-landing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Deploy to Firebase Hosting (landing)
+        run: firebase deploy --only hosting:landing --project apps-369 --token ${{ secrets.FIREBASE_TOKEN }}

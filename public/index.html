@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Foodly — digitalize your restaurant, bar or food business. Digital menus, reservations, nearby discovery, AI promotions, real-time analytics and group orders with split payments. Free to use — just a 3% commission on orders paid through Foodly. No subscriptions, no monthly fees." />
+  <meta name="theme-color" content="#79005D" />
+  <link rel="canonical" href="https://foodly.solutions/" />
+
+  <meta property="og:title" content="Foodly — Digitalize your food business" />
+  <meta property="og:description" content="Digital menus, reservations, AI promotions, real-time analytics and group orders with split payments for restaurants, bars, food trucks and caterers. Free to use — 3% only on orders paid through Foodly. No subscriptions." />
+  <meta property="og:image" content="https://foodly.solutions/logo.png" />
+  <meta property="og:url" content="https://foodly.solutions" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Foodly" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Foodly — Digitalize your food business" />
+  <meta name="twitter:description" content="Digital menus, reservations, discovery and group orders with split payments. Free to use — 3% only on orders paid through Foodly. No subscriptions." />
+  <meta name="twitter:image" content="https://foodly.solutions/logo.png" />
+
+  <!-- Favicons (square, padded — avoids ISO deformation in browser tabs) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <title>Foodly — Digitalize your food business</title>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Foodly",
+    "operatingSystem": "iOS, Android, Web",
+    "applicationCategory": "BusinessApplication",
+    "url": "https://foodly.solutions",
+    "description": "Digital menus, reservations, nearby discovery, AI promotions, real-time analytics and group orders with split payments for food businesses.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "description": "Free to use. 3% commission only on orders paid through Foodly (covers payment processing). No subscriptions, no monthly fees, no setup cost."
+    },
+    "publisher": { "@type": "Organization", "name": "Foodly", "email": "hello@foodly.solutions", "url": "https://foodly.solutions" }
+  }
+  </script>
+
+  <style>
+    :root {
+      /* Foodly brand palette — extracted from the app (foodly_themes.dart) */
+      --plum: #79005D;          /* primaryFoodly */
+      --plum-bright: #DF00AB;   /* accentColor = primaryFoodly.lighten(20) */
+      --plum-deep: #52003E;     /* official brand gradient start (store assets) */
+      --plum-night: #1B1015;    /* backgroundDarkFoodly */
+      --plum-tint: #FFEEFB;     /* primaryFoodly.lighten(73) */
+      --plum-tint-2: #FFF7FD;
+      --rose: #C66AA6;          /* soft rose glow (brand store assets) */
+      --mauve: #AF8B96;         /* secondaryFoodly */
+      /* Foodly green — tertiaryFoodly, secondary accent used sparingly */
+      --green: #14C45D;
+      --green-dark: #109F4B;
+      /* Neutrals (plum-warmed) */
+      --ink: #2B1024;
+      --muted: #6F5A66;
+      --border: #EFDFE9;
+      --bg: #FBF7FA;
+      --white: #FFFFFF;
+      --radius: 20px;
+      --shadow-soft: 0 10px 40px rgba(121, 0, 93, 0.10);
+      --shadow-deep: 0 24px 60px rgba(27, 16, 21, 0.35);
+      --grad: linear-gradient(135deg, var(--plum-deep), var(--plum));
+      --grad-vivid: linear-gradient(135deg, var(--plum), var(--plum-bright));
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, video, iframe { max-width: 100%; display: block; }
+    a { color: var(--plum); }
+
+    /* ══ Scroll reveal ══ */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.65,.3,1), transform .7s cubic-bezier(.2,.65,.3,1); transition-delay: var(--d, 0s); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+
+    /* ══ Top nav (glass) ══ */
+    nav.top {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px clamp(16px, 4vw, 40px);
+      background: rgba(255,255,255,0.72);
+      -webkit-backdrop-filter: saturate(1.6) blur(16px);
+      backdrop-filter: saturate(1.6) blur(16px);
+      border-bottom: 1px solid rgba(121,0,93,0.10);
+    }
+    nav.top .logo { height: 40px; width: auto; object-fit: contain; display: block; }
+    .nav-links { display: flex; gap: clamp(12px, 2vw, 26px); align-items: center; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 600;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--plum); }
+    .nav-links a.nav-cta {
+      background: var(--grad); color: var(--white);
+      padding: 9px 18px; border-radius: 100px;
+      box-shadow: 0 6px 18px rgba(121,0,93,.35);
+      transition: transform .18s, box-shadow .18s;
+    }
+    .nav-links a.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(121,0,93,.45); color: var(--white); }
+    .nav-toggle {
+      display: none; background: none; border: 0; cursor: pointer; padding: 8px;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px 0; border-radius: 2px; transition: transform .25s, opacity .25s; }
+    @media (max-width: 860px) {
+      nav.top .logo { height: 34px; }
+      .nav-toggle { display: block; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: rgba(255,255,255,0.95);
+        -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+        max-height: 0; overflow: hidden; transition: max-height .35s ease;
+      }
+      .nav-links a { padding: 14px 24px; border-top: 1px solid var(--border); }
+      .nav-links a.nav-cta { margin: 12px 24px 16px; text-align: center; border-radius: 12px; }
+      nav.top.open .nav-links { max-height: 480px; }
+      nav.top.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      nav.top.open .nav-toggle span:nth-child(2) { opacity: 0; }
+      nav.top.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+
+    /* ══ Hero ══ */
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, var(--plum-night) 0%, var(--plum-deep) 34%, var(--plum) 68%, var(--plum-bright) 100%);
+      background-size: 160% 160%;
+      animation: heroShift 16s ease-in-out infinite alternate;
+      color: var(--white);
+      padding: clamp(64px, 9vw, 110px) clamp(20px, 5vw, 48px) clamp(72px, 9vw, 120px);
+    }
+    @keyframes heroShift {
+      0%   { background-position: 0% 0%; }
+      100% { background-position: 100% 100%; }
+    }
+    .hero .orb {
+      position: absolute; border-radius: 50%; filter: blur(70px); opacity: .45; pointer-events: none;
+    }
+    .hero .orb-1 { width: 420px; height: 420px; background: #DF00AB; top: -120px; right: -80px; animation: orbFloat 11s ease-in-out infinite alternate; }
+    .hero .orb-2 { width: 360px; height: 360px; background: #14C45D; bottom: -160px; left: -120px; opacity: .22; animation: orbFloat 14s ease-in-out infinite alternate-reverse; }
+    @keyframes orbFloat {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(-40px, 36px) scale(1.12); }
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+      gap: clamp(32px, 5vw, 64px); align-items: center;
+    }
+    .hero .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--white); font-size: .78rem; font-weight: 700;
+      letter-spacing: 1.1px; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 100px; margin-bottom: 22px;
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    }
+    .hero .eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgba(20,196,93,.6); animation: pulse 2.2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(20,196,93,.55); }
+      70% { box-shadow: 0 0 0 9px rgba(20,196,93,0); }
+      100% { box-shadow: 0 0 0 0 rgba(20,196,93,0); }
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800; letter-spacing: -1.2px; line-height: 1.08;
+      margin-bottom: 18px; max-width: 640px;
+    }
+    .hero h1 .hl {
+      background: linear-gradient(90deg, #B9F5CF, #4ADE87);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p.tagline {
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      color: rgba(255,255,255,0.88); max-width: 560px; margin-bottom: 32px;
+    }
+    .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 15px 30px; border-radius: 14px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      transition: transform .18s, box-shadow .18s, background .18s;
+      cursor: pointer; border: none;
+    }
+    .btn-green {
+      background: var(--green); color: var(--white);
+      box-shadow: 0 8px 24px rgba(20,196,93,.4);
+    }
+    .btn-green:hover { background: var(--green-dark); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(20,196,93,.45); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.10); color: var(--white);
+      border: 1px solid rgba(255,255,255,0.45);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { transform: translateY(-3px); background: rgba(255,255,255,0.18); }
+    .hero-facts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 36px; }
+    .fact {
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      border-radius: 12px; padding: 8px 14px;
+      font-size: .82rem; font-weight: 600; color: rgba(255,255,255,0.92);
+    }
+    .fact strong { color: #7DF0A8; font-weight: 800; }
+
+    /* Phone mockup — frame ratio matches a real phone (9:19.5); images are
+       cropped (object-fit: cover), never stretched */
+    .phone-wrap { display: flex; justify-content: center; }
+    /* En desktop el mockup se corre a la derecha para cerrar el vacío del hero */
+    @media (min-width: 861px) { .hero .phone-wrap { justify-content: flex-end; padding-right: clamp(0px, 2vw, 28px); } }
+    .phone {
+      position: relative;
+      width: min(290px, 74vw);
+      border-radius: 42px;
+      background: #150D12;
+      padding: 11px;
+      box-shadow: 0 30px 70px rgba(27,16,21,.55), inset 0 0 0 1px rgba(255,255,255,.08);
+      animation: phoneFloat 6s ease-in-out infinite;
+    }
+    @keyframes phoneFloat {
+      0%, 100% { transform: translateY(0) rotate(1.6deg); }
+      50% { transform: translateY(-14px) rotate(1.6deg); }
+    }
+    .phone::before {
+      content: ""; position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+      width: 86px; height: 22px; background: #150D12; border-radius: 12px; z-index: 2;
+    }
+    .phone img {
+      border-radius: 32px; width: 100%;
+      aspect-ratio: 9 / 19.5; height: auto;
+      object-fit: cover; object-position: top center;
+      background: #150D12;
+    }
+    .phone-static { animation: none; }
+
+    /* ══ Sections ══ */
+    section { padding: clamp(64px, 8vw, 104px) clamp(20px, 5vw, 48px); }
+    .wrap { max-width: 1160px; margin: 0 auto; }
+    .kicker {
+      display: inline-block; font-size: .78rem; font-weight: 800;
+      letter-spacing: 1.4px; text-transform: uppercase;
+      background: var(--plum-tint); color: var(--plum);
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 14px;
+    }
+    section h2 {
+      font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 800;
+      letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 14px;
+    }
+    .section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(36px, 5vw, 56px); }
+    .section-head p { color: var(--muted); font-size: 1.05rem; }
+
+    /* ══ About ══ */
+    .about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .about-card {
+      background: linear-gradient(180deg, var(--plum-tint-2), var(--white));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 30px 26px; transition: transform .22s, box-shadow .22s, border-color .22s;
+    }
+    .about-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: var(--plum-bright); }
+    .about-card .num {
+      font-size: 1.9rem; font-weight: 800;
+      background: var(--grad-vivid); -webkit-background-clip: text; background-clip: text; color: transparent;
+      margin-bottom: 6px;
+    }
+    .about-card h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; }
+    .about-card p { color: var(--muted); font-size: .95rem; }
+
+    /* ══ Feature grids ══ */
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 18px; }
+    .feature {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px 22px; transition: transform .22s, box-shadow .22s, border-color .22s;
+    }
+    .feature:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: var(--plum-bright); }
+    .feature .icon {
+      width: 46px; height: 46px; border-radius: 13px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 14px;
+      box-shadow: 0 6px 16px rgba(121,0,93,.28);
+    }
+    .feature h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+    .feature p { color: var(--muted); font-size: .9rem; line-height: 1.55; }
+
+    /* Screens showcase */
+    .screens-row {
+      display: flex; justify-content: center; align-items: flex-end;
+      gap: clamp(18px, 3.5vw, 44px); margin-top: clamp(40px, 5vw, 64px); flex-wrap: wrap;
+    }
+    .screen-card { text-align: center; }
+    .screen-card .phone { width: min(230px, 62vw); animation: none; border-radius: 34px; padding: 9px; box-shadow: 0 18px 48px rgba(43,16,36,.22), inset 0 0 0 1px rgba(255,255,255,.08); transition: transform .3s; }
+    .screen-card .phone::before { width: 68px; height: 17px; top: 17px; }
+    .screen-card .phone img { border-radius: 26px; }
+    .screen-card:hover .phone { transform: translateY(-8px) scale(1.02); }
+    .screen-card .cap { margin-top: 16px; font-weight: 700; font-size: .95rem; color: var(--ink); }
+    .screen-card .cap small { display: block; font-weight: 500; color: var(--muted); }
+
+    /* ══ Group orders spotlight ══ */
+    .split {
+      background:
+        radial-gradient(900px 420px at 85% -10%, rgba(198,106,166,.40), transparent 60%),
+        radial-gradient(700px 420px at -10% 110%, rgba(20,196,93,.22), transparent 55%),
+        linear-gradient(150deg, var(--plum-night), var(--plum-deep) 60%, var(--plum));
+      color: var(--white);
+    }
+    .split .kicker { background: rgba(255,255,255,.14); color: #B9F5CF; }
+    .split .section-head p { color: rgba(255,255,255,.82); }
+    .split-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 980px; margin: 0 auto; }
+    .glass-step {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+      border-radius: var(--radius); padding: 28px 24px;
+      transition: transform .22s, background .22s, border-color .22s;
+    }
+    .glass-step:hover { transform: translateY(-5px); background: rgba(255,255,255,0.13); border-color: rgba(125,240,168,.5); }
+    .glass-step .step-n {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; margin-bottom: 14px; box-shadow: 0 6px 16px rgba(20,196,93,.4);
+    }
+    .glass-step h3 { font-size: 1.04rem; font-weight: 700; margin-bottom: 8px; }
+    .glass-step p { color: rgba(255,255,255,.8); font-size: .92rem; }
+    .split-note {
+      text-align: center; margin-top: 34px; font-size: .9rem; color: rgba(255,255,255,.75);
+    }
+    .split-note strong { color: #7DF0A8; }
+
+    /* ══ For businesses ══ */
+    .business { background: var(--white); }
+    .biz-layout {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(32px, 5vw, 60px); align-items: center; margin-top: 8px;
+    }
+    .biz-screens { display: flex; gap: 20px; justify-content: center; align-items: flex-start; }
+    .biz-screens .phone { animation: none; width: min(215px, 44vw); border-radius: 32px; padding: 9px; box-shadow: 0 18px 48px rgba(43,16,36,.22), inset 0 0 0 1px rgba(255,255,255,.08); }
+    .biz-screens .phone::before { width: 62px; height: 16px; top: 16px; }
+    .biz-screens .phone img { border-radius: 24px; }
+    .biz-screens .phone:nth-child(2) { margin-top: 46px; }
+
+    /* ══ Pricing ══ */
+    .pricing { background: linear-gradient(180deg, var(--bg), var(--plum-tint-2)); }
+    .price-card {
+      position: relative; overflow: hidden;
+      max-width: 880px; margin: 0 auto;
+      background: rgba(255,255,255,0.82);
+      -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+      border: 1px solid rgba(121,0,93,0.16);
+      border-radius: 28px; padding: clamp(32px, 5vw, 56px);
+      box-shadow: 0 20px 60px rgba(121,0,93,.12);
+      text-align: center;
+    }
+    .price-card::before {
+      content: ""; position: absolute; inset: 0 0 auto 0; height: 6px;
+      background: var(--grad-vivid);
+    }
+    .price-big {
+      font-size: clamp(3rem, 8vw, 4.6rem); font-weight: 800; letter-spacing: -2px; line-height: 1;
+      background: var(--grad-vivid); -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .price-big small { font-size: .35em; font-weight: 700; letter-spacing: 0; }
+    .price-sub { font-size: 1.1rem; font-weight: 700; margin: 8px 0 6px; }
+    .price-desc { color: var(--muted); max-width: 620px; margin: 0 auto 28px; font-size: .98rem; }
+    .price-points {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px; text-align: left; margin-bottom: 28px;
+    }
+    .price-point {
+      display: flex; gap: 10px; align-items: flex-start;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 14px; padding: 14px 16px; font-size: .92rem;
+    }
+    .price-point .tick {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: var(--green); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; margin-top: 1px;
+    }
+    .price-point b { display: block; }
+    .price-point span { color: var(--muted); }
+    .price-fineprint { font-size: .84rem; color: var(--muted); max-width: 640px; margin: 18px auto 0; }
+
+    /* ══ Portugal ══ */
+    .portugal { background: var(--white); text-align: center; }
+    .pt-copy { max-width: 780px; margin: 0 auto; }
+    .pt-copy .flag { font-size: 1.6rem; margin-bottom: 10px; display: inline-block; }
+    .pt-copy p { color: var(--muted); margin-bottom: 16px; }
+    .pt-badges { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
+    .pt-badge {
+      background: var(--plum-tint); color: var(--plum);
+      font-weight: 700; font-size: .82rem;
+      padding: 7px 14px; border-radius: 100px;
+    }
+
+    /* ══ Manifesto (YouTube lite embed) ══ */
+    .manifesto {
+      background:
+        radial-gradient(800px 420px at 50% -10%, rgba(223,0,171,.26), transparent 60%),
+        radial-gradient(620px 380px at 92% 112%, rgba(20,196,93,.14), transparent 55%),
+        var(--plum-night);
+      color: var(--white);
+    }
+    .manifesto .kicker { background: rgba(255,255,255,.14); color: #FFACEC; }
+    .manifesto .section-head p { color: rgba(255,255,255,.82); }
+    .yt-lite {
+      position: relative; max-width: 880px; margin: 0 auto;
+      aspect-ratio: 16 / 9; border-radius: 24px; overflow: hidden;
+      cursor: pointer; background: #000;
+      box-shadow: 0 28px 70px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .yt-lite img, .yt-lite iframe {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; border: 0;
+    }
+    .yt-lite::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(180deg, rgba(27,16,21,0) 55%, rgba(27,16,21,.55));
+      transition: opacity .25s;
+    }
+    .yt-lite.is-playing::after { opacity: 0; }
+    .yt-play {
+      position: absolute; z-index: 1; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 84px; height: 84px; border-radius: 50%;
+      background: var(--grad-vivid);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 34px rgba(121,0,93,.55), 0 0 0 10px rgba(255,255,255,.12);
+      transition: transform .2s, box-shadow .2s;
+      pointer-events: none;
+    }
+    .yt-lite:hover .yt-play, .yt-lite:focus-visible .yt-play {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 16px 40px rgba(223,0,171,.5), 0 0 0 12px rgba(20,196,93,.35);
+    }
+    .yt-play svg { width: 30px; height: 30px; fill: var(--white); }
+    .yt-lite.is-playing .yt-play { display: none; }
+    .yt-lite:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
+
+    /* ══ Roadmap ══ */
+    .roadmap-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+    .roadmap-item {
+      display: flex; gap: 18px; padding: 20px 22px;
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--radius);
+      align-items: flex-start; transition: transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .roadmap-item:hover { transform: translateX(6px); border-color: var(--plum-bright); box-shadow: var(--shadow-soft); }
+    .roadmap-item .quarter {
+      background: var(--grad); color: var(--white);
+      font-weight: 800; font-size: .74rem; letter-spacing: .5px;
+      padding: 6px 12px; border-radius: 9px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    }
+    .roadmap-item .quarter.live { background: var(--green); }
+    .roadmap-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 3px; }
+    .roadmap-item p { color: var(--muted); font-size: .9rem; line-height: 1.55; }
+
+    /* ══ Download ══ */
+    .download {
+      background:
+        radial-gradient(700px 380px at 15% 0%, rgba(223,0,171,.38), transparent 60%),
+        linear-gradient(135deg, var(--plum-deep), var(--plum) 55%, var(--plum-bright));
+      color: var(--white); text-align: center;
+    }
+    .download h2 { color: var(--white); }
+    .download .section-head p { color: rgba(255,255,255,.85); }
+    .store-badges { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: rgba(21,13,18,.88); color: var(--white);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 13px 26px; border-radius: 14px; text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s;
+      min-width: 220px;
+    }
+    .store-badge:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,.35); background: #000; }
+    .store-badge .store-icon { width: 30px; height: 30px; flex-shrink: 0; }
+    .store-badge .store-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; text-align: left; }
+    .store-badge .store-prefix { font-size: .68rem; letter-spacing: .4px; opacity: .85; text-transform: uppercase; }
+    .store-badge .store-name { font-size: 1.16rem; font-weight: 700; letter-spacing: -.2px; }
+
+    /* ══ Contact ══ */
+    .contact { text-align: center; }
+    .contact-box {
+      max-width: 520px; margin: 0 auto;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 24px; padding: 44px 32px;
+      box-shadow: var(--shadow-soft);
+    }
+    .contact-box .icon-circle {
+      width: 62px; height: 62px; border-radius: 50%;
+      background: var(--grad);
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-bottom: 10px; font-size: 26px;
+      box-shadow: 0 8px 24px rgba(121,0,93,.35);
+    }
+    .contact-box .email { font-size: 1.25rem; font-weight: 800; margin: 8px 0 6px; }
+    .contact-box .email a { color: var(--plum); text-decoration: none; }
+    .contact-box .email a:hover { text-decoration: underline; }
+    .contact-box p { color: var(--muted); font-size: .93rem; }
+
+    /* ══ Footer ══ */
+    footer {
+      background: var(--plum-night);
+      color: rgba(255,255,255,0.72);
+      padding: 52px clamp(20px, 5vw, 48px) 34px;
+      text-align: center;
+    }
+    footer .footer-logo { height: 28px; width: auto; object-fit: contain; margin: 0 auto 18px; filter: brightness(0) invert(1); opacity: .95; }
+    footer .footer-links {
+      display: flex; gap: 10px 26px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 18px; font-size: .9rem;
+    }
+    footer .footer-links a { color: rgba(255,255,255,0.72); text-decoration: none; transition: color .15s; }
+    footer .footer-links a:hover { color: #7DF0A8; }
+    footer .copyright { font-size: .84rem; color: rgba(255,255,255,0.5); }
+    footer .parent { font-size: .78rem; color: rgba(255,255,255,0.38); margin-top: 6px; }
+
+    /* ══ Responsive ══ */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero h1, .hero p.tagline { margin-left: auto; margin-right: auto; }
+      .cta-row, .hero-facts { justify-content: center; }
+      .phone-wrap { order: 2; margin-top: 8px; }
+      .about-grid, .split-grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+      .biz-layout { grid-template-columns: 1fr; }
+      .biz-screens { order: 2; }
+    }
+    @media (max-width: 640px) {
+      .roadmap-item { flex-direction: column; gap: 10px; }
+      .biz-screens .phone:nth-child(2) { margin-top: 24px; }
+      .yt-play { width: 68px; height: 68px; }
+      .yt-play svg { width: 24px; height: 24px; }
+    }
+
+    /* ══ Reduced motion ══ */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero, .hero .orb, .phone, .hero .eyebrow .dot { animation: none !important; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top nav -->
+  <nav class="top" id="topnav" aria-label="Main navigation">
+    <a href="#top" aria-label="Foodly home"><img src="/logo.png" alt="Foodly" class="logo" width="121" height="40" /></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#diners">For diners</a>
+      <a href="#group-orders">Group orders</a>
+      <a href="#businesses">For businesses</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="#download" class="nav-cta">Get the app</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Now in commercial beta · Portugal</div>
+        <h1>Digitalize your food business. <span class="hl">Get discovered.</span> Get paid.</h1>
+        <p class="tagline">Digital menus, table reservations, AI-powered promotions, real-time analytics and group orders with split payments — one platform for restaurants, bars, food trucks, caterers and the diners who love them.</p>
+        <div class="cta-row">
+          <a href="#businesses" class="btn btn-green">For restaurants &amp; bars</a>
+          <a href="#diners" class="btn btn-ghost">For diners</a>
+        </div>
+        <div class="hero-facts">
+          <div class="fact"><strong>€0</strong> subscriptions</div>
+          <div class="fact"><strong>3%</strong> only when you get paid through Foodly</div>
+          <div class="fact">iOS · Android · Web</div>
+        </div>
+      </div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <img src="/assets/screen-home-pt.webp" alt="Foodly app home screen showing nearby restaurant discovery and featured promotions" width="540" height="1320" fetchpriority="high" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">What is Foodly?</span>
+        <h2>One platform. Two sides. Zero friction.</h2>
+        <p>Foodly is a B2B2C platform that helps food businesses go digital and grow — and helps diners discover great places to eat nearby, book tables and pay together, effortlessly.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal" style="--d:.05s">
+          <div class="num">01</div>
+          <h3>Go digital in minutes</h3>
+          <p>Create a rich digital menu with photos, prices and combos, share it anywhere with a link or QR code, and update it live — no tech skills needed.</p>
+        </div>
+        <div class="about-card reveal" style="--d:.15s">
+          <div class="num">02</div>
+          <h3>Get discovered nearby</h3>
+          <p>Diners around you find your business through location-based discovery, semantic search in three languages and a vibrant community feed.</p>
+        </div>
+        <div class="about-card reveal" style="--d:.25s">
+          <div class="num">03</div>
+          <h3>Only pay when you get paid</h3>
+          <p>Foodly is free to use. A transparent 3% commission applies only to orders your customers pay through Foodly — it covers payment processing. No subscriptions, ever.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- For diners -->
+  <section id="diners">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">For diners</span>
+        <h2>Everything you crave, around the corner</h2>
+        <p>Discover, explore, reserve, split the bill and stay in the loop — everything you need to find and enjoy great food near you.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature reveal" style="--d:.02s">
+          <div class="icon">🗺️</div>
+          <h3>Nearby discovery</h3>
+          <p>Find restaurants, bars, food trucks and chefs around you with real-time distance, opening hours and categories.</p>
+        </div>
+        <div class="feature reveal" style="--d:.06s">
+          <div class="icon">🔍</div>
+          <h3>Multilingual smart search</h3>
+          <p>Semantic search in Portuguese, Spanish and English — type what you feel like eating, not just keywords.</p>
+        </div>
+        <div class="feature reveal" style="--d:.10s">
+          <div class="icon">📖</div>
+          <h3>Rich digital menus</h3>
+          <p>Complete menus with photos, descriptions, prices, categories and combos. Food, drinks and service packages.</p>
+        </div>
+        <div class="feature reveal" style="--d:.14s">
+          <div class="icon">📅</div>
+          <h3>Table reservations</h3>
+          <p>Book in seconds with real-time availability. Manage all your reservations from one place.</p>
+        </div>
+        <div class="feature reveal" style="--d:.18s">
+          <div class="icon">🧾</div>
+          <h3>Group orders &amp; split payments</h3>
+          <p>One shared order per table — everyone adds their items and pays their own share from their phone. No bill drama.</p>
+        </div>
+        <div class="feature reveal" style="--d:.22s">
+          <div class="icon">🎉</div>
+          <h3>Promotions &amp; offers</h3>
+          <p>Browse active promotions from nearby businesses and save your favorites for later.</p>
+        </div>
+        <div class="feature reveal" style="--d:.02s">
+          <div class="icon">❤️</div>
+          <h3>Favorites</h3>
+          <p>Save businesses, menus, items and combos you love — and never lose that restaurant you tried once.</p>
+        </div>
+        <div class="feature reveal" style="--d:.06s">
+          <div class="icon">📣</div>
+          <h3>Buzz feed</h3>
+          <p>A community feed with posts, news and updates from the places and people you follow in your area.</p>
+        </div>
+        <div class="feature reveal" style="--d:.10s">
+          <div class="icon">⭐</div>
+          <h3>Reviews &amp; ratings</h3>
+          <p>Read genuine reviews from real diners with photos and ratings before you book or visit.</p>
+        </div>
+        <div class="feature reveal" style="--d:.14s">
+          <div class="icon">🔒</div>
+          <h3>Biometric login</h3>
+          <p>Sign in with Face ID or fingerprint. Fast, secure and no passwords to remember.</p>
+        </div>
+        <div class="feature reveal" style="--d:.18s">
+          <div class="icon">🌐</div>
+          <h3>Multi-language app</h3>
+          <p>Full interface in Portuguese, Spanish and English — with Italian, German and French coming soon.</p>
+        </div>
+        <div class="feature reveal" style="--d:.22s">
+          <div class="icon">🍽️</div>
+          <h3>Catering &amp; private chefs</h3>
+          <p>Discover catering services and private chefs for your events, parties and special occasions.</p>
+        </div>
+      </div>
+      <div class="screens-row">
+        <div class="screen-card reveal" style="--d:.05s">
+          <div class="phone phone-static"><img loading="lazy" src="/assets/screen-discovery.webp" alt="Foodly discovery screen with category filters and distance radius" width="720" height="1760" /></div>
+          <div class="cap">Discover<small>Places near you, by category</small></div>
+        </div>
+        <div class="screen-card reveal" style="--d:.15s">
+          <div class="phone phone-static"><img loading="lazy" src="/assets/screen-menu-qr.webp" alt="Foodly digital menu with QR code sharing" width="720" height="1760" /></div>
+          <div class="cap">Digital menus<small>Browse, share, scan</small></div>
+        </div>
+        <div class="screen-card reveal" style="--d:.25s">
+          <div class="phone phone-static"><img loading="lazy" src="/assets/screen-reservations.webp" alt="Foodly reservations screen with confirmed bookings" width="720" height="1760" /></div>
+          <div class="cap">Reservations<small>Booked in seconds</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Group orders spotlight -->
+  <section class="split" id="group-orders">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">New · Group orders</span>
+        <h2>One table. One order. Everyone pays their share.</h2>
+        <p>Foodly's group orders end the awkward bill-splitting moment. Each guest adds their items, sees a transparent breakdown, and pays their own share — securely, from their own phone.</p>
+      </div>
+      <div class="split-grid">
+        <div class="glass-step reveal" style="--d:.05s">
+          <div class="step-n">1</div>
+          <h3>Start a group order</h3>
+          <p>Anyone at the table opens the restaurant's menu in Foodly and starts a shared order. Friends join in a tap.</p>
+        </div>
+        <div class="glass-step reveal" style="--d:.15s">
+          <div class="step-n">2</div>
+          <h3>Everyone adds their items</h3>
+          <p>Each guest picks their own dishes and drinks. Share plates, cover a friend, split evenly or pay item by item — your table, your rules.</p>
+        </div>
+        <div class="glass-step reveal" style="--d:.25s">
+          <div class="step-n">3</div>
+          <h3>Pay your share, done</h3>
+          <p>Everyone pays their own part with a full breakdown shown before confirming — tip included if you like. The restaurant gets paid instantly.</p>
+        </div>
+      </div>
+      <p class="split-note reveal">Payments are processed securely by <strong>Stripe</strong>. Every diner sees the exact amount — including the payment platform's small €0.25 processing fee — <strong>before</strong> paying. No surprises, for anyone.</p>
+    </div>
+  </section>
+
+  <!-- For businesses -->
+  <section class="business" id="businesses">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">For food businesses</span>
+        <h2>Your restaurant's digital toolkit</h2>
+        <p>Everything you need to go digital, get found, take bookings, get paid and understand your audience — with zero setup cost.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature reveal" style="--d:.02s">
+          <div class="icon">📱</div>
+          <h3>Digital menu in minutes</h3>
+          <p>Create a complete menu with photos, prices, categories and combos. Live updates, instantly visible to diners.</p>
+        </div>
+        <div class="feature reveal" style="--d:.06s">
+          <div class="icon">🌍</div>
+          <h3>Embeddable public menu</h3>
+          <p>A shareable web menu at menu.foodly.solutions/your-id — post it on Instagram, WhatsApp or your site.</p>
+        </div>
+        <div class="feature reveal" style="--d:.10s">
+          <div class="icon">📅</div>
+          <h3>Reservations dashboard</h3>
+          <p>Real-time reservations with confirm, reject, no-show and party-size limits. Calendar view included.</p>
+        </div>
+        <div class="feature reveal" style="--d:.14s">
+          <div class="icon">💳</div>
+          <h3>In-app payments &amp; group orders</h3>
+          <p>Let tables order together and pay separately via Stripe. You get the full order value, minus a transparent 3%.</p>
+        </div>
+        <div class="feature reveal" style="--d:.18s">
+          <div class="icon">📊</div>
+          <h3>Real-time analytics</h3>
+          <p>Live KPIs, daily trends, funnel analytics and top events. Understand what's working at a glance.</p>
+        </div>
+        <div class="feature reveal" style="--d:.22s">
+          <div class="icon">✨</div>
+          <h3>AI promotions</h3>
+          <p>Generate promotional content with AI — 6 free generations per month included in the basic plan.</p>
+        </div>
+        <div class="feature reveal" style="--d:.02s">
+          <div class="icon">📍</div>
+          <h3>Local discovery</h3>
+          <p>Get found by diners near you with accurate location-based discovery and category filters.</p>
+        </div>
+        <div class="feature reveal" style="--d:.06s">
+          <div class="icon">🏪</div>
+          <h3>Multi-location &amp; branches</h3>
+          <p>Manage multiple branches under one account. Assign promotions and schedules per location.</p>
+        </div>
+        <div class="feature reveal" style="--d:.10s">
+          <div class="icon">👔</div>
+          <h3>Team &amp; roles</h3>
+          <p>Role-based access for owners, managers and staff. Granular permissions per feature.</p>
+        </div>
+        <div class="feature reveal" style="--d:.14s">
+          <div class="icon">💬</div>
+          <h3>Customer messaging</h3>
+          <p>Two-way reservation messaging and automated notifications for new, changed and cancelled bookings.</p>
+        </div>
+        <div class="feature reveal" style="--d:.18s">
+          <div class="icon">🎁</div>
+          <h3>Service packages</h3>
+          <p>Sell special experiences: catering, private events, tastings, chef-at-home. Quote workflow included.</p>
+        </div>
+        <div class="feature reveal" style="--d:.22s">
+          <div class="icon">📣</div>
+          <h3>Posts to followers</h3>
+          <p>Share news, events and specials directly with diners following you through the Buzz feed.</p>
+        </div>
+      </div>
+      <div class="biz-layout" style="margin-top: clamp(44px, 6vw, 72px);">
+        <div class="reveal">
+          <span class="kicker">Know your numbers</span>
+          <h2 style="font-size: clamp(1.5rem, 2.6vw, 2rem);">Decisions backed by real-time data</h2>
+          <p style="color: var(--muted); margin-bottom: 14px;">Track reservations, reviews, business views and conversion funnels as they happen. See your daily trends, spot your busiest days and measure how promotions perform — all from your phone.</p>
+          <p style="color: var(--muted);">Need a boost? Generate professional promotion copy and imagery with the built-in AI assistant, schedule it, and watch the results roll into your dashboard.</p>
+        </div>
+        <div class="biz-screens reveal" style="--d:.15s">
+          <div class="phone phone-static"><img loading="lazy" src="/assets/screen-analytics.webp" alt="Foodly business analytics dashboard with KPIs, daily trends and conversion funnel" width="720" height="1760" /></div>
+          <div class="phone phone-static"><img loading="lazy" src="/assets/screen-ai-promo.webp" alt="Foodly AI promotion generator creating promotional content" width="720" height="1760" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">Pricing</span>
+        <h2>We only earn when you do</h2>
+        <p>No subscriptions. No monthly fees. No setup cost. Foodly is free to use — we simply take a small commission when your customers pay through Foodly.</p>
+      </div>
+      <div class="price-card reveal">
+        <div class="price-big">3<small>%</small></div>
+        <div class="price-sub">per order paid through Foodly — and that's it</div>
+        <p class="price-desc">The 3% commission covers payment processing, so there are no hidden card fees on your side. Orders paid at the counter or in cash? Those are yours, free of charge — Foodly stays free.</p>
+        <div class="price-points">
+          <div class="price-point">
+            <div class="tick">✓</div>
+            <div><b>€0 subscriptions</b><span>No monthly fees, no setup cost, no long-term contracts.</span></div>
+          </div>
+          <div class="price-point">
+            <div class="tick">✓</div>
+            <div><b>Payment processing included</b><span>The 3% covers card processing via Stripe — no extra charges to you.</span></div>
+          </div>
+          <div class="price-point">
+            <div class="tick">✓</div>
+            <div><b>Radical transparency</b><span>Diners see the full breakdown — including the payment platform's €0.25 processing fee — before they pay.</span></div>
+          </div>
+          <div class="price-point">
+            <div class="tick">✓</div>
+            <div><b>Free everywhere else</b><span>Menus, reservations, discovery, analytics and the Buzz feed cost you nothing.</span></div>
+          </div>
+        </div>
+        <a href="#download" class="btn btn-green">Start free today</a>
+        <p class="price-fineprint">A €0.25 payment-platform processing fee per transaction is charged by the payment platform (Stripe) and shown transparently to the diner before paying — it never comes out of your revenue. Tips go to the restaurant.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Made for Portugal -->
+  <section class="portugal">
+    <div class="wrap">
+      <div class="pt-copy reveal">
+        <span class="flag" aria-hidden="true">🇵🇹</span><br />
+        <span class="kicker">Made for Portugal</span>
+        <h2>Growing plate by plate, starting in Portugal</h2>
+        <p>Foodly's commercial beta is live in Portugal — built with local restaurants, in Portuguese, for the way people actually eat out here: long tables, shared plates and bills that used to be complicated.</p>
+        <p>From tascas to fine dining, we're helping Portuguese food businesses get discovered, take bookings and get paid — with European GDPR-grade data protection and EU-hosted infrastructure.</p>
+        <div class="pt-badges">
+          <span class="pt-badge">🇵🇹 Português first</span>
+          <span class="pt-badge">🇪🇺 EU data hosting</span>
+          <span class="pt-badge">🔐 GDPR compliant</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Manifesto video -->
+  <section class="manifesto" id="manifesto">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">Our manifesto</span>
+        <h2>Why we built Foodly</h2>
+        <p>Foodly wasn't born in a boardroom. It was born at the table — watch the manifesto behind everything we build.</p>
+      </div>
+      <div class="yt-lite reveal" id="ytManifesto" role="button" tabindex="0" style="--d:.1s"
+           aria-label="Play video: Why we built Foodly — the Foodly manifesto">
+        <img src="https://i.ytimg.com/vi/eEw8pgI2QQA/maxresdefault.jpg"
+             alt="Why we built Foodly — the Foodly manifesto video"
+             loading="lazy" width="1280" height="720" />
+        <span class="yt-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5.14v13.72c0 .78.85 1.26 1.52.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z"/></svg>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap -->
+  <section class="roadmap-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">Roadmap</span>
+        <h2>What's live, what's next</h2>
+        <p>Foodly is just getting started. Here's where we are today — and where we're headed.</p>
+      </div>
+      <div class="roadmap-list">
+        <div class="roadmap-item reveal" style="--d:.02s">
+          <div class="quarter live">LIVE</div>
+          <div class="content">
+            <h4>Digital menus, reservations, analytics &amp; Buzz</h4>
+            <p>Complete business toolkit with embeddable web menus, real-time reservations, analytics dashboard and social community feed — all available today.</p>
+          </div>
+        </div>
+        <div class="roadmap-item reveal" style="--d:.08s">
+          <div class="quarter live">LIVE</div>
+          <div class="content">
+            <h4>Catering &amp; private chefs vertical</h4>
+            <p>A dedicated vertical for caterers and private chefs with service packages and quote-based bookings.</p>
+          </div>
+        </div>
+        <div class="roadmap-item reveal" style="--d:.14s">
+          <div class="quarter live">BETA</div>
+          <div class="content">
+            <h4>Group orders &amp; split payments</h4>
+            <p>One shared order per table, each guest pays their share via Stripe — with tips, shared plates and flexible split modes. Live now in the Portugal commercial beta.</p>
+          </div>
+        </div>
+        <div class="roadmap-item reveal" style="--d:.20s">
+          <div class="quarter">Q4 2026</div>
+          <div class="content">
+            <h4>More languages for tourist markets</h4>
+            <p>Adding Italian, German and French to the app — ideal for restaurants in tourist-heavy locations across Southern Europe.</p>
+          </div>
+        </div>
+        <div class="roadmap-item reveal" style="--d:.26s">
+          <div class="quarter">2027</div>
+          <div class="content">
+            <h4>Latin America, POS integrations &amp; B2B marketplace</h4>
+            <p>Split payments via MercadoPago for Latin America, direct integrations with common POS systems, and a B2B gastronomy marketplace for ingredient sourcing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section class="download" id="download">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2>Get the Foodly app</h2>
+        <p>Discover restaurants and bars near you, book tables, order together and follow your favorite places — all in your pocket.</p>
+      </div>
+      <div class="store-badges reveal" style="--d:.1s">
+        <a href="https://api.foodly.solutions/dl/android" class="store-badge" target="_blank" rel="noopener" aria-label="Get Foodly on Google Play">
+          <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 1.713a.7.7 0 011.05-.607l16.142 9.288a.7.7 0 010 1.213L4.05 22.894A.7.7 0 013 22.287V1.713z"/>
+          </svg>
+          <span class="store-text">
+            <span class="store-prefix">Get it on</span>
+            <span class="store-name">Google Play</span>
+          </span>
+        </a>
+        <a href="https://api.foodly.solutions/dl/ios" class="store-badge" target="_blank" rel="noopener" aria-label="Download Foodly on the App Store">
+          <svg class="store-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span class="store-text">
+            <span class="store-prefix">Download on the</span>
+            <span class="store-name">App Store</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="kicker">Contact</span>
+        <h2>Get in touch</h2>
+        <p>Questions, partnerships or press inquiries — we'd love to hear from you.</p>
+      </div>
+      <div class="contact-box reveal" style="--d:.1s">
+        <div class="icon-circle">✉️</div>
+        <div class="email"><a href="mailto:hello@foodly.solutions">hello@foodly.solutions</a></div>
+        <p>For privacy-related requests, write to <a href="mailto:privacy@foodly.solutions">privacy@foodly.solutions</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <img src="/logo.png" alt="Foodly" class="footer-logo" width="85" height="28" />
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#diners">For diners</a>
+      <a href="#businesses">For businesses</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#download">Download</a>
+      <a href="#contact">Contact</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="https://menu.foodly.solutions">Public Menus</a>
+    </div>
+    <div class="copyright">© 2026 Foodly. All rights reserved.</div>
+    <div class="parent">An Apps 369 company.</div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      /* Mobile nav toggle */
+      var nav = document.getElementById("topnav");
+      var toggle = document.getElementById("navToggle");
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      document.getElementById("navLinks").addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+          nav.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* Scroll reveal */
+      var revealEls = document.querySelectorAll(".reveal");
+      if (!reduced && "IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-in");
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+        revealEls.forEach(function (el) { io.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add("is-in"); });
+      }
+
+      /* Manifesto video — YouTube lite embed (iframe injected on demand) */
+      var yt = document.getElementById("ytManifesto");
+      if (yt) {
+        var VIDEO_ID = "eEw8pgI2QQA";
+        var thumb = yt.querySelector("img");
+        var fallback = "https://i.ytimg.com/vi/" + VIDEO_ID + "/hqdefault.jpg";
+        thumb.addEventListener("error", function () {
+          if (thumb.src !== fallback) { thumb.src = fallback; }
+        });
+        thumb.addEventListener("load", function () {
+          /* YouTube serves a 120x90 grey placeholder when maxresdefault is missing */
+          if (thumb.naturalWidth <= 120 && thumb.src !== fallback) { thumb.src = fallback; }
+        });
+        var playManifesto = function () {
+          if (yt.classList.contains("is-playing")) { return; }
+          yt.classList.add("is-playing");
+          var iframe = document.createElement("iframe");
+          iframe.src = "https://www.youtube-nocookie.com/embed/" + VIDEO_ID + "?autoplay=1&rel=0";
+          iframe.title = "Why we built Foodly — the Foodly manifesto";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.setAttribute("allowfullscreen", "");
+          yt.appendChild(iframe);
+          yt.removeAttribute("role");
+          yt.removeAttribute("tabindex");
+          yt.style.cursor = "default";
+        };
+        yt.addEventListener("click", playManifesto);
+        yt.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+            e.preventDefault();
+            playManifesto();
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

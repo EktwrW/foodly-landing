@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sitemap for foodly.solutions — the marketing landing page.
+
+  Why list privacy.foodly.solutions / menu.foodly.solutions here? They
+  live under DIFFERENT subdomains (separate Firebase Hosting deploys),
+  and Search Console treats each subdomain as its own property. We
+  intentionally LIMIT this sitemap to URLs hosted under foodly.solutions
+  apex; the other subdomains (if registered as Search Console properties)
+  would carry their own sitemap.
+
+  Update this file when adding new public pages to foodly_landing/public.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://foodly.solutions/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://foodly.solutions/privacy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://foodly.solutions/terms</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

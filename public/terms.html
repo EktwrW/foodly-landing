@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!-- DRAFT: pending legal review -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Foodly Terms & Conditions — service description, accounts, user content, payments and commissions, refunds, availability, limitation of liability and governing law (Portugal)." />
+  <meta name="theme-color" content="#79005D" />
+  <link rel="canonical" href="https://foodly.solutions/terms" />
+
+  <meta property="og:title" content="Terms & Conditions — Foodly" />
+  <meta property="og:description" content="The terms that govern your use of the Foodly platform." />
+  <meta property="og:image" content="https://foodly.solutions/logo.png" />
+  <meta property="og:url" content="https://foodly.solutions/terms" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <title>Terms &amp; Conditions — Foodly</title>
+
+  <style>
+    :root {
+      /* Foodly brand palette — extracted from the app (foodly_themes.dart) */
+      --plum: #79005D;          /* primaryFoodly */
+      --plum-bright: #DF00AB;   /* accentColor = primaryFoodly.lighten(20) */
+      --plum-deep: #52003E;     /* official brand gradient start (store assets) */
+      --plum-night: #1B1015;    /* backgroundDarkFoodly */
+      --plum-tint: #FFEEFB;     /* primaryFoodly.lighten(73) */
+      --green: #14C45D;         /* tertiaryFoodly */
+      --ink: #2B1024;
+      --muted: #6F5A66;
+      --border: #EFDFE9;
+      --bg: #FBF7FA;
+      --white: #FFFFFF;
+      --grad: linear-gradient(135deg, var(--plum-deep), var(--plum));
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--plum); }
+
+    nav.top {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px clamp(16px, 4vw, 40px);
+      background: rgba(255,255,255,0.72);
+      -webkit-backdrop-filter: saturate(1.6) blur(16px);
+      backdrop-filter: saturate(1.6) blur(16px);
+      border-bottom: 1px solid rgba(121,0,93,0.10);
+    }
+    nav.top .logo { height: 40px; width: auto; object-fit: contain; display: block; }
+    @media (max-width: 560px) { nav.top .logo { height: 34px; } }
+    .nav-links { display: flex; gap: clamp(14px, 2vw, 26px); align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 600; transition: color .15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--plum); }
+
+    .page-hero {
+      background: linear-gradient(150deg, var(--plum-night), var(--plum-deep) 55%, var(--plum));
+      color: var(--white); text-align: center;
+      padding: clamp(48px, 7vw, 84px) 24px;
+    }
+    .page-hero .kicker {
+      display: inline-block; font-size: .76rem; font-weight: 800;
+      letter-spacing: 1.4px; text-transform: uppercase;
+      background: rgba(255,255,255,.14); color: #FFACEC;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .page-hero h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -1px; }
+    .page-hero .updated { margin-top: 10px; font-size: .9rem; color: rgba(255,255,255,.75); }
+
+    main { max-width: 860px; margin: 0 auto; padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 32px) clamp(56px, 7vw, 88px); }
+    .card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 24px;
+      padding: clamp(28px, 5vw, 56px);
+      box-shadow: 0 12px 44px rgba(121,0,93,.08);
+    }
+    .card h2 {
+      font-size: 1.28rem; font-weight: 800; letter-spacing: -.3px;
+      margin: 36px 0 12px; padding-top: 8px; color: var(--plum-deep);
+    }
+    .card h2:first-child { margin-top: 0; }
+    .card h3 { font-size: 1.02rem; font-weight: 700; margin: 22px 0 8px; }
+    .card p { margin-bottom: 14px; color: #4A3542; font-size: .97rem; }
+    .card ul { margin: 0 0 16px 22px; }
+    .card li { margin-bottom: 8px; color: #4A3542; font-size: .97rem; }
+    .card li b { color: var(--ink); }
+    .notice {
+      background: var(--plum-tint); border: 1px solid #F5CBE8; border-radius: 14px;
+      padding: 16px 18px; font-size: .93rem; color: var(--plum-deep); margin-bottom: 24px;
+    }
+    .fee-box {
+      background: linear-gradient(180deg, #FFF7FD, var(--white));
+      border: 1px solid #F5CBE8; border-radius: 16px;
+      padding: 20px 22px; margin: 8px 0 18px;
+    }
+    .fee-box b { color: var(--plum-deep); }
+
+    footer {
+      background: var(--plum-night); color: rgba(255,255,255,0.72);
+      padding: 48px clamp(20px, 5vw, 48px) 32px; text-align: center;
+    }
+    footer .footer-logo { height: 28px; width: auto; object-fit: contain; margin: 0 auto 18px; filter: brightness(0) invert(1); opacity: .95; }
+    footer .footer-links { display: flex; gap: 10px 26px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; font-size: .9rem; }
+    footer .footer-links a { color: rgba(255,255,255,0.72); text-decoration: none; transition: color .15s; }
+    footer .footer-links a:hover { color: #7DF0A8; }
+    footer .copyright { font-size: .84rem; color: rgba(255,255,255,0.5); }
+    footer .parent { font-size: .78rem; color: rgba(255,255,255,0.38); margin-top: 6px; }
+
+    @media (max-width: 560px) {
+      .nav-links a:not(:last-child) { font-size: .86rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top" aria-label="Main navigation">
+    <a href="/" aria-label="Foodly home"><img src="/logo.png" alt="Foodly" class="logo" width="121" height="40" /></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms" class="active">Terms</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <span class="kicker">Legal</span>
+    <h1>Terms &amp; Conditions</h1>
+    <p class="updated">Last updated: July 30, 2026</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="notice">
+        These Terms &amp; Conditions (the "Terms") govern your access to and use of the Foodly mobile apps, the Foodly web platform and the foodly.solutions website (together, the "Service"). By creating an account or using the Service you agree to these Terms. If you do not agree, please do not use the Service.
+      </div>
+
+      <h2>1. The Service</h2>
+      <p>Foodly is a platform that connects food businesses (restaurants, bars, cafés, food trucks, caterers and private chefs — "Businesses") with people who want to discover and enjoy them ("Diners"). The Service includes, among other features:</p>
+      <ul>
+        <li>Digital menus and shareable public menu pages;</li>
+        <li>Nearby discovery, search, promotions, reviews and a community feed ("Buzz");</li>
+        <li>Table reservations and quote-based service requests;</li>
+        <li>Group orders with split payments, tips and in-app payment processing;</li>
+        <li>Business tools: dashboards, analytics, AI-assisted promotion content, team roles and multi-location management.</li>
+      </ul>
+      <p>Foodly is a technology platform. The Businesses listed on Foodly are independent from us: they prepare and serve the food, honour reservations and are responsible for their menus, prices, allergen information and regulatory compliance. A reservation or order creates a direct relationship between the Diner and the Business.</p>
+
+      <h2>2. Accounts</h2>
+      <ul>
+        <li>You must be at least 16 years old to create an account, and at least 18 to place paid orders.</li>
+        <li>You agree to provide accurate information and keep your credentials secure. You are responsible for activity under your account.</li>
+        <li>Business accounts must be created by someone authorised to represent the Business, and the information published (menus, prices, hours, allergens) must be accurate and kept up to date.</li>
+        <li>We may suspend or terminate accounts that violate these Terms, applicable law, or the security and integrity of the Service.</li>
+        <li>You can delete your account at any time from the app or by writing to <a href="mailto:hello@foodly.solutions">hello@foodly.solutions</a>.</li>
+      </ul>
+
+      <h2>3. User content</h2>
+      <ul>
+        <li>You keep ownership of the content you upload (photos, reviews, posts, menu content). By uploading it, you grant Foodly a non-exclusive, worldwide, royalty-free licence to host, display and distribute that content within the Service (e.g., showing a Business's menu to Diners, or your review on a Business profile).</li>
+        <li>You must have the rights to the content you upload, and it must not be unlawful, misleading, offensive or infringe third-party rights.</li>
+        <li>Reviews must reflect genuine experiences. Fake, incentivised-without-disclosure or defamatory reviews may be removed.</li>
+        <li>We may remove content that violates these Terms or applicable law.</li>
+      </ul>
+
+      <h2>4. Payments, commissions and fees</h2>
+      <p>Foodly is <b>free to use</b>: no subscriptions, no monthly fees, no setup cost. We only earn when a Business gets paid through Foodly.</p>
+      <div class="fee-box">
+        <p style="margin-bottom:10px;"><b>For Businesses:</b> a <b>3% commission</b> applies to each order paid through Foodly. This commission covers payment processing — there are no additional card-processing charges from Foodly on top of it. Orders not paid through Foodly carry no commission.</p>
+        <p style="margin-bottom:10px;"><b>For Diners:</b> a <b>€0.25 payment-platform processing fee</b> per transaction is applied by the payment platform (Stripe). It is always shown transparently in the payment breakdown <b>before</b> you confirm the payment — no hidden charges.</p>
+        <p style="margin-bottom:0;"><b>Tips:</b> tips go to the restaurant in full, minus a 2% payment-processing recovery that covers the cost of processing the tip amount.</p>
+      </div>
+      <ul>
+        <li>Payments are processed by <b>Stripe</b>. By paying through the Service you also agree to Stripe's applicable terms. Foodly never stores your full card number.</li>
+        <li>In group orders, each participant is responsible for paying their own share (or the shares they choose to cover). An order is complete when all shares are paid.</li>
+        <li>Prices, menus and promotions are set by each Business. The total, including any tip and the payment-platform processing fee, is displayed before you pay.</li>
+        <li>Commission rates and fees may change; we will announce changes in advance, and they will never apply retroactively to payments already made.</li>
+      </ul>
+
+      <h2>5. Refunds and disputes</h2>
+      <ul>
+        <li>Because the Business prepares and serves your order, <b>refunds are handled between the Business and the Diner</b>, with Foodly's support.</li>
+        <li>If something goes wrong with an order paid through Foodly, contact the Business first; if you cannot reach a resolution, write to <a href="mailto:hello@foodly.solutions">hello@foodly.solutions</a> and we will assist with the process, including facilitating refunds through the payment platform where the Business approves them or where required by law.</li>
+        <li>Nothing in these Terms limits your statutory consumer rights under Portuguese and EU consumer protection law.</li>
+      </ul>
+
+      <h2>6. Acceptable use</h2>
+      <p>You agree not to misuse the Service — including attempting to breach its security, scraping data, impersonating others, sending spam, manipulating reviews or rankings, or using the Service for any unlawful purpose.</p>
+
+      <h2>7. Availability — "as is"</h2>
+      <p>We work hard to keep Foodly fast and available 24/7, but the Service is provided <b>"as is" and "as available"</b>, without warranties of any kind to the extent permitted by law. We do not guarantee uninterrupted or error-free operation, and features may change, be added or be withdrawn as the platform evolves (including features in beta).</p>
+
+      <h2>8. Limitation of liability</h2>
+      <p>To the maximum extent permitted by applicable law:</p>
+      <ul>
+        <li>Foodly is not liable for the acts or omissions of Businesses or Diners, including food quality, allergens, service, or the fulfilment of reservations and orders;</li>
+        <li>Foodly is not liable for indirect or consequential damages, loss of profits, or loss of data arising from the use of the Service;</li>
+        <li>Foodly's total aggregate liability for claims relating to the Service is limited to the greater of (a) the commissions paid by you (if a Business) or fees paid by you (if a Diner) to Foodly in the 12 months preceding the claim, or (b) €100.</li>
+      </ul>
+      <p>Nothing in these Terms excludes or limits liability that cannot be excluded under Portuguese law, including liability for wilful misconduct or gross negligence, or your statutory rights as a consumer.</p>
+
+      <h2>9. Intellectual property</h2>
+      <p>The Foodly name, logo, apps, design and software are the property of Foodly and its licensors. These Terms do not grant you any right to use them except as needed to use the Service.</p>
+
+      <h2>10. Changes to these Terms</h2>
+      <p>We may update these Terms from time to time. We will post the updated version with a new "Last updated" date and, for material changes, give you reasonable advance notice in the app or by email. Continued use of the Service after changes take effect constitutes acceptance of the updated Terms.</p>
+
+      <h2>11. Governing law and jurisdiction</h2>
+      <p>These Terms are governed by the laws of <b>Portugal</b>. Any dispute arising from these Terms or the Service will be submitted to the competent courts of Portugal, without prejudice to any mandatory consumer rules that let you bring proceedings in your place of residence. Consumers may also use the EU online dispute resolution platform at <a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">ec.europa.eu/consumers/odr</a>.</p>
+
+      <h2>12. Contact</h2>
+      <p>Questions about these Terms? Write to <a href="mailto:hello@foodly.solutions">hello@foodly.solutions</a>. For privacy matters, see our <a href="/privacy">Privacy Policy</a> or write to <a href="mailto:privacy@foodly.solutions">privacy@foodly.solutions</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <img src="/logo.png" alt="Foodly" class="footer-logo" width="85" height="28" />
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/#diners">For diners</a>
+      <a href="/#businesses">For businesses</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#download">Download</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="https://menu.foodly.solutions">Public Menus</a>
+    </div>
+    <div class="copyright">© 2026 Foodly. All rights reserved.</div>
+    <div class="parent">An Apps 369 company.</div>
+  </footer>
+</body>
+</html>

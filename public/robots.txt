@@ -1,0 +1,14 @@
+# foodly.solutions — Foodly's marketing landing page.
+#
+# This is the public face of the product (positioning, features, app
+# store links). All content is intentionally indexable; we WANT search
+# engines to surface it for queries like "Foodly", "digitalize my
+# restaurant", "menu QR catering Latin America", etc.
+#
+# The sitemap below is the canonical source of indexable URLs. Keep it
+# in sync when adding new pages.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://foodly.solutions/sitemap.xml

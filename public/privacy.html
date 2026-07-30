@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!-- DRAFT: pending legal review -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="description" content="Foodly Privacy Policy — how we collect, use and protect your personal data under the GDPR. Account data, location, photos, reservations, orders, payments via Stripe, push notifications and analytics." />
+  <meta name="theme-color" content="#79005D" />
+  <link rel="canonical" href="https://foodly.solutions/privacy" />
+
+  <meta property="og:title" content="Privacy Policy — Foodly" />
+  <meta property="og:description" content="How Foodly collects, uses and protects your personal data under the GDPR." />
+  <meta property="og:image" content="https://foodly.solutions/logo.png" />
+  <meta property="og:url" content="https://foodly.solutions/privacy" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+  <title>Privacy Policy — Foodly</title>
+
+  <style>
+    :root {
+      /* Foodly brand palette — extracted from the app (foodly_themes.dart) */
+      --plum: #79005D;          /* primaryFoodly */
+      --plum-bright: #DF00AB;   /* accentColor = primaryFoodly.lighten(20) */
+      --plum-deep: #52003E;     /* official brand gradient start (store assets) */
+      --plum-night: #1B1015;    /* backgroundDarkFoodly */
+      --plum-tint: #FFEEFB;     /* primaryFoodly.lighten(73) */
+      --green: #14C45D;         /* tertiaryFoodly */
+      --ink: #2B1024;
+      --muted: #6F5A66;
+      --border: #EFDFE9;
+      --bg: #FBF7FA;
+      --white: #FFFFFF;
+      --grad: linear-gradient(135deg, var(--plum-deep), var(--plum));
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: var(--plum); }
+
+    nav.top {
+      position: sticky; top: 0; z-index: 50;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px clamp(16px, 4vw, 40px);
+      background: rgba(255,255,255,0.72);
+      -webkit-backdrop-filter: saturate(1.6) blur(16px);
+      backdrop-filter: saturate(1.6) blur(16px);
+      border-bottom: 1px solid rgba(121,0,93,0.10);
+    }
+    nav.top .logo { height: 40px; width: auto; object-fit: contain; display: block; }
+    @media (max-width: 560px) { nav.top .logo { height: 34px; } }
+    .nav-links { display: flex; gap: clamp(14px, 2vw, 26px); align-items: center; flex-wrap: wrap; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .93rem; font-weight: 600; transition: color .15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--plum); }
+
+    .page-hero {
+      background: linear-gradient(150deg, var(--plum-night), var(--plum-deep) 55%, var(--plum));
+      color: var(--white); text-align: center;
+      padding: clamp(48px, 7vw, 84px) 24px;
+    }
+    .page-hero .kicker {
+      display: inline-block; font-size: .76rem; font-weight: 800;
+      letter-spacing: 1.4px; text-transform: uppercase;
+      background: rgba(255,255,255,.14); color: #FFACEC;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .page-hero h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 800; letter-spacing: -1px; }
+    .page-hero .updated { margin-top: 10px; font-size: .9rem; color: rgba(255,255,255,.75); }
+
+    main { max-width: 860px; margin: 0 auto; padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 32px) clamp(56px, 7vw, 88px); }
+    .card {
+      background: var(--white); border: 1px solid var(--border); border-radius: 24px;
+      padding: clamp(28px, 5vw, 56px);
+      box-shadow: 0 12px 44px rgba(121,0,93,.08);
+    }
+    .card h2 {
+      font-size: 1.28rem; font-weight: 800; letter-spacing: -.3px;
+      margin: 36px 0 12px; padding-top: 8px; color: var(--plum-deep);
+    }
+    .card h2:first-child { margin-top: 0; }
+    .card h3 { font-size: 1.02rem; font-weight: 700; margin: 22px 0 8px; }
+    .card p { margin-bottom: 14px; color: #4A3542; font-size: .97rem; }
+    .card ul { margin: 0 0 16px 22px; }
+    .card li { margin-bottom: 8px; color: #4A3542; font-size: .97rem; }
+    .card li b { color: var(--ink); }
+    .notice {
+      background: var(--plum-tint); border: 1px solid #F5CBE8; border-radius: 14px;
+      padding: 16px 18px; font-size: .93rem; color: var(--plum-deep); margin-bottom: 24px;
+    }
+    table { width: 100%; border-collapse: collapse; margin: 8px 0 18px; font-size: .92rem; }
+    th, td { text-align: left; padding: 10px 12px; border: 1px solid var(--border); vertical-align: top; }
+    th { background: var(--plum-tint); color: var(--plum-deep); font-weight: 700; }
+    td { color: #4A3542; }
+
+    footer {
+      background: var(--plum-night); color: rgba(255,255,255,0.72);
+      padding: 48px clamp(20px, 5vw, 48px) 32px; text-align: center;
+    }
+    footer .footer-logo { height: 28px; width: auto; object-fit: contain; margin: 0 auto 18px; filter: brightness(0) invert(1); opacity: .95; }
+    footer .footer-links { display: flex; gap: 10px 26px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; font-size: .9rem; }
+    footer .footer-links a { color: rgba(255,255,255,0.72); text-decoration: none; transition: color .15s; }
+    footer .footer-links a:hover { color: #7DF0A8; }
+    footer .copyright { font-size: .84rem; color: rgba(255,255,255,0.5); }
+    footer .parent { font-size: .78rem; color: rgba(255,255,255,0.38); margin-top: 6px; }
+
+    @media (max-width: 560px) {
+      .nav-links a:not(:last-child) { font-size: .86rem; }
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      td { border-top: 0; }
+      tr { border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="top" aria-label="Main navigation">
+    <a href="/" aria-label="Foodly home"><img src="/logo.png" alt="Foodly" class="logo" width="121" height="40" /></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/privacy" class="active">Privacy</a>
+      <a href="/terms">Terms</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="page-hero">
+    <span class="kicker">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: July 30, 2026</p>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="notice">
+        This Privacy Policy explains how Foodly collects, uses and protects your personal data in accordance with Regulation (EU) 2016/679 (the <b>GDPR</b>) and applicable Portuguese data protection law. Please read it together with our <a href="/terms">Terms &amp; Conditions</a>.
+      </div>
+
+      <h2>1. Who we are (Data Controller)</h2>
+      <p><b>Foodly</b> (operating at <a href="https://foodly.solutions">foodly.solutions</a>) is the data controller responsible for the personal data processed through the Foodly mobile apps, the Foodly web platform and this website (together, the "Service").</p>
+      <ul>
+        <li><b>Controller:</b> Foodly (an Apps 369 company)</li>
+        <li><b>Website:</b> https://foodly.solutions</li>
+        <li><b>Contact:</b> <a href="mailto:hello@foodly.solutions">hello@foodly.solutions</a></li>
+        <li><b>Privacy requests:</b> <a href="mailto:privacy@foodly.solutions">privacy@foodly.solutions</a></li>
+      </ul>
+
+      <h2>2. What data we process</h2>
+      <p>Depending on how you use the Service, we may process the following categories of personal data:</p>
+      <ul>
+        <li><b>Account data</b> — your name, email address and the credentials you use to sign in (including sign-in via biometric authentication on your device; biometric data itself never leaves your device).</li>
+        <li><b>Location data</b> — your approximate or precise location, used to show you restaurants, bars and other food businesses near you. Location access is optional and controlled through your device permissions; you can also search by typing an address.</li>
+        <li><b>Photos and content you upload</b> — profile pictures, review photos, posts and, for business accounts, menu and venue imagery.</li>
+        <li><b>Reservation data</b> — bookings you request, party size, dates, status, and messages exchanged with the business about a reservation.</li>
+        <li><b>Order and payment data</b> — items in individual or group orders, amounts, split shares, tips and payment status. Payments are processed by <b>Stripe</b>; <b>Foodly never stores your card number</b> (see section 5).</li>
+        <li><b>Push notification tokens</b> — device tokens used to send you notifications (e.g., reservation confirmations, order updates) via Firebase Cloud Messaging (FCM).</li>
+        <li><b>Basic analytics and technical data</b> — app events (e.g., screens viewed, features used), device type, operating system, language and crash reports, used to understand usage and improve the Service.</li>
+      </ul>
+
+      <h2>3. Why we process it (purposes and legal bases)</h2>
+      <table>
+        <thead>
+          <tr><th>Purpose</th><th>Data used</th><th>Legal basis (GDPR Art. 6)</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Creating and managing your account; providing the core Service (menus, discovery, reservations, orders, community features)</td>
+            <td>Account, reservation, order and content data</td>
+            <td>Performance of a contract (Art. 6(1)(b))</td>
+          </tr>
+          <tr>
+            <td>Showing you nearby businesses</td>
+            <td>Location data</td>
+            <td>Consent (Art. 6(1)(a)) — via your device's location permission, revocable at any time</td>
+          </tr>
+          <tr>
+            <td>Processing payments, split payments and tips; preventing fraud</td>
+            <td>Order and payment data</td>
+            <td>Performance of a contract (Art. 6(1)(b)); legal obligation (Art. 6(1)(c)) for accounting records</td>
+          </tr>
+          <tr>
+            <td>Sending push notifications about your reservations and orders</td>
+            <td>Push tokens, reservation/order data</td>
+            <td>Performance of a contract (Art. 6(1)(b)); consent for optional/marketing notifications</td>
+          </tr>
+          <tr>
+            <td>Improving and securing the Service; fixing bugs</td>
+            <td>Analytics and technical data</td>
+            <td>Legitimate interests (Art. 6(1)(f)) — running a safe, reliable product</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>4. How long we keep your data (retention)</h2>
+      <ul>
+        <li><b>Account data</b> — kept while your account is active. If you delete your account, we delete or anonymise your personal data within 30 days, except where we must keep it longer by law.</li>
+        <li><b>Reservation and order records</b> — kept for the duration required for accounting, tax and payment-dispute purposes (generally up to 10 years for invoicing records under Portuguese law, where applicable).</li>
+        <li><b>Photos and posts</b> — kept until you delete them or delete your account.</li>
+        <li><b>Analytics data</b> — kept in aggregated or pseudonymised form; raw event data is retained for a limited period.</li>
+        <li><b>Push tokens</b> — deleted when you log out, disable notifications or uninstall the app.</li>
+      </ul>
+
+      <h2>5. Payments — Stripe as processor</h2>
+      <p>All in-app payments (including group orders, split payments and tips) are processed by <b>Stripe Payments Europe, Ltd.</b> and its affiliates ("Stripe"), a PCI-DSS certified payment provider. Your card details are collected directly by Stripe through secure payment interfaces; <b>Foodly does not receive and does not store your full card number</b>. Foodly only receives confirmation of payment status and limited metadata (e.g., last four digits, card brand) needed to display your payment history. Stripe acts as a processor/independent controller for its own compliance obligations — see <a href="https://stripe.com/privacy" rel="noopener" target="_blank">Stripe's Privacy Policy</a>.</p>
+
+      <h2>6. Who we share data with</h2>
+      <ul>
+        <li><b>Food businesses on Foodly</b> — when you make a reservation or place an order, the business receives the details needed to fulfil it (your name, party size, order items, payment status — never your card details).</li>
+        <li><b>Service providers (processors)</b> — Google Cloud / Firebase (hosting, database, authentication, push notifications, analytics) and Stripe (payments). All are bound by data processing agreements.</li>
+        <li><b>Authorities</b> — only where required by law.</li>
+      </ul>
+      <p>We do <b>not</b> sell your personal data.</p>
+
+      <h2>7. International transfers</h2>
+      <p>Your data is primarily stored in the European Union. Some of our providers (Google Cloud/Firebase, Stripe) may transfer limited data outside the EU/EEA. Where that happens, transfers are protected by the European Commission's Standard Contractual Clauses and/or an adequacy decision (such as the EU–US Data Privacy Framework), together with additional safeguards.</p>
+
+      <h2>8. Your rights</h2>
+      <p>Under the GDPR you have the right to:</p>
+      <ul>
+        <li><b>Access</b> — obtain a copy of the personal data we hold about you;</li>
+        <li><b>Rectification</b> — correct inaccurate or incomplete data;</li>
+        <li><b>Erasure</b> — ask us to delete your data ("right to be forgotten");</li>
+        <li><b>Restriction</b> — limit how we process your data in certain cases;</li>
+        <li><b>Portability</b> — receive your data in a structured, commonly used, machine-readable format;</li>
+        <li><b>Objection</b> — object to processing based on legitimate interests, and to direct marketing at any time;</li>
+        <li><b>Withdraw consent</b> — at any time, without affecting processing already carried out (e.g., disable location access in your device settings).</li>
+      </ul>
+      <p>To exercise any of these rights, email <a href="mailto:privacy@foodly.solutions">privacy@foodly.solutions</a>. We will respond within one month. You also have the right to lodge a complaint with your supervisory authority — in Portugal, the <b>Comissão Nacional de Proteção de Dados (CNPD)</b>, <a href="https://www.cnpd.pt" rel="noopener" target="_blank">www.cnpd.pt</a>.</p>
+
+      <h2>9. Security</h2>
+      <p>We use technical and organisational measures appropriate to the risk, including encryption in transit (TLS), encrypted storage, role-based access controls, and EU-hosted infrastructure on Google Cloud. No system is 100% secure, but we work to protect your data at every layer.</p>
+
+      <h2>10. Children</h2>
+      <p>The Service is not directed at children under 16, and we do not knowingly collect personal data from them. If you believe a child has provided us with personal data, contact us and we will delete it.</p>
+
+      <h2>11. Changes to this policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will post the updated version on this page with a new "Last updated" date and, for material changes, notify you in the app or by email.</p>
+
+      <h2>12. Contact</h2>
+      <p>Questions about this policy or your data? Write to <a href="mailto:privacy@foodly.solutions">privacy@foodly.solutions</a> or <a href="mailto:hello@foodly.solutions">hello@foodly.solutions</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <img src="/logo.png" alt="Foodly" class="footer-logo" width="85" height="28" />
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/#diners">For diners</a>
+      <a href="/#businesses">For businesses</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#download">Download</a>
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="https://menu.foodly.solutions">Public Menus</a>
+    </div>
+    <div class="copyright">© 2026 Foodly. All rights reserved.</div>
+    <div class="parent">An Apps 369 company.</div>
+  </footer>
+</body>
+</html>

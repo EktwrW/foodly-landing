@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "apps-369"
+  },
+  "targets": {
+    "apps-369": {
+      "hosting": {
+        "landing": [
+          "foodly-landing"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
