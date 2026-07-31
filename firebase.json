@@ -13,28 +13,65 @@
       {
         "source": "/*.@(html)",
         "headers": [
-          { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
         ]
       },
       {
         "source": "/*.@(png|jpg|jpeg|svg|webp|ico)",
         "headers": [
-          { "key": "Cache-Control", "value": "max-age=604800" }
+          {
+            "key": "Cache-Control",
+            "value": "max-age=604800"
+          }
         ]
       },
       {
         "source": "/sitemap.xml",
         "headers": [
-          { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-          { "key": "Cache-Control", "value": "max-age=3600" }
+          {
+            "key": "Content-Type",
+            "value": "application/xml; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600"
+          }
         ]
       },
       {
         "source": "/robots.txt",
         "headers": [
-          { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-          { "key": "Cache-Control", "value": "max-age=86400" }
+          {
+            "key": "Content-Type",
+            "value": "text/plain; charset=utf-8"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "max-age=86400"
+          }
         ]
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/join/**",
+        "destination": "/join.html"
       }
     ]
   }
