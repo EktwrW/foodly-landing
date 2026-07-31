@@ -2,28 +2,59 @@
 <!--
   Sitemap for foodly.solutions — the marketing landing page.
 
-  Why list privacy.foodly.solutions / menu.foodly.solutions here? They
-  live under DIFFERENT subdomains (separate Firebase Hosting deploys),
-  and Search Console treats each subdomain as its own property. We
-  intentionally LIMIT this sitemap to URLs hosted under foodly.solutions
-  apex; the other subdomains (if registered as Search Console properties)
-  would carry their own sitemap.
+  Localized landing pages carry reciprocal xhtml:link hreflang
+  alternates (en = x-default, es, pt-PT). Canonical URLs have NO
+  trailing slash for /es and /pt because firebase.json sets
+  "trailingSlash": false (Firebase 301s /es/ -> /es).
+
+  We intentionally LIMIT this sitemap to URLs hosted under the
+  foodly.solutions apex; other subdomains (menu.foodly.solutions,
+  privacy.foodly.solutions) are separate Search Console properties
+  with their own sitemaps.
 
   Update this file when adding new public pages to foodly_landing/public.
 -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://foodly.solutions/</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foodly.solutions/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://foodly.solutions/es" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://foodly.solutions/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foodly.solutions/" />
+  </url>
+  <url>
+    <loc>https://foodly.solutions/es</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foodly.solutions/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://foodly.solutions/es" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://foodly.solutions/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foodly.solutions/" />
+  </url>
+  <url>
+    <loc>https://foodly.solutions/pt</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://foodly.solutions/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://foodly.solutions/es" />
+    <xhtml:link rel="alternate" hreflang="pt-PT" href="https://foodly.solutions/pt" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://foodly.solutions/" />
   </url>
   <url>
     <loc>https://foodly.solutions/privacy</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://foodly.solutions/terms</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
