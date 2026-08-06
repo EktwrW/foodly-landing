@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="description" content="Menu digital QR, reservas online, promoções com IA e conta dividida para o seu restaurante. Grátis, sem subscrição: 3% só em pedidos pagos na Foodly." />
   <meta name="theme-color" content="#79005D" />
   <link rel="canonical" href="https://foodly.solutions/pt" />
@@ -15,6 +15,8 @@
   <link rel="alternate" hreflang="x-default" href="https://foodly.solutions/" />
 
   <link rel="preconnect" href="https://i.ytimg.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
   <meta property="og:title" content="Foodly — Menu Digital QR e Reservas para Restaurantes" />
   <meta property="og:description" content="Menu digital QR, reservas, descoberta local e pedidos de grupo com pagamento dividido. Grátis — 3% só em pedidos pagos pela Foodly. Sem subscrições." />
@@ -677,6 +679,31 @@
       * { transition-duration: .01ms !important; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://foodly.solutions/#website",
+    "url": "https://foodly.solutions/",
+    "name": "Foodly",
+    "inLanguage": "pt-PT",
+    "publisher": { "@id": "https://foodly.solutions/#organization" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Porque criámos a Foodly — o manifesto da Foodly",
+    "description": "A Foodly não nasceu numa sala de reuniões, nasceu à mesa: a história por trás da plataforma que digitaliza negócios de restauração com menus QR, reservas e pedidos de grupo com conta dividida.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/eEw8pgI2QQA/maxresdefault.jpg",
+    "uploadDate": "2026-04-20T12:00:00+01:00",
+    "embedUrl": "https://www.youtube-nocookie.com/embed/eEw8pgI2QQA",
+    "contentUrl": "https://www.youtube.com/watch?v=eEw8pgI2QQA",
+    "publisher": { "@id": "https://foodly.solutions/#organization" },
+    "inLanguage": "pt-PT"
+  }
+  </script>
 </head>
 <body>
 
@@ -1252,5 +1279,6 @@
       }
     })();
   </script>
+  <script src="/assets/analytics.js" defer></script>
 </body>
 </html>

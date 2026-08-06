@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="description" content="Digital QR menus, reservations, AI promotions and split-bill group orders for restaurants. Free, no subscription — 3% only on orders paid through Foodly." />
   <meta name="theme-color" content="#79005D" />
   <link rel="canonical" href="https://foodly.solutions/" />
@@ -15,6 +15,8 @@
   <link rel="alternate" hreflang="x-default" href="https://foodly.solutions/" />
 
   <link rel="preconnect" href="https://i.ytimg.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
   <meta property="og:title" content="Foodly — Digital QR Menus &amp; Reservations for Restaurants" />
   <meta property="og:description" content="Digital menus, reservations, AI promotions, real-time analytics and group orders with split payments for restaurants, bars, food trucks and caterers. Free to use — 3% only on orders paid through Foodly. No subscriptions." />
@@ -677,6 +679,31 @@
       * { transition-duration: .01ms !important; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://foodly.solutions/#website",
+    "url": "https://foodly.solutions/",
+    "name": "Foodly",
+    "inLanguage": "en",
+    "publisher": { "@id": "https://foodly.solutions/#organization" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "name": "Why we built Foodly — the Foodly manifesto",
+    "description": "Foodly wasn't born in a boardroom. It was born at the table: the story behind the platform that digitalizes food businesses with QR menus, reservations and split-bill group orders.",
+    "thumbnailUrl": "https://i.ytimg.com/vi/eEw8pgI2QQA/maxresdefault.jpg",
+    "uploadDate": "2026-04-20T12:00:00+01:00",
+    "embedUrl": "https://www.youtube-nocookie.com/embed/eEw8pgI2QQA",
+    "contentUrl": "https://www.youtube.com/watch?v=eEw8pgI2QQA",
+    "publisher": { "@id": "https://foodly.solutions/#organization" },
+    "inLanguage": "en"
+  }
+  </script>
 </head>
 <body>
 
@@ -1252,5 +1279,6 @@
       }
     })();
   </script>
+  <script src="/assets/analytics.js" defer></script>
 </body>
 </html>
