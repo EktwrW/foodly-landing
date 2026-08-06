@@ -175,14 +175,21 @@
   }
 
   function wireEvents() {
-    /* Descargas de la app — la conversión principal. */
+    /* Descargas de la app — la conversión principal.
+       OJO (verificado en prod 2026-08-05): los badges NO apuntan a las
+       tiendas, sino a los redirectores propios api.foodly.solutions/dl/*.
+       El selector viejo (play.google.com / apps.apple.com) no matcheaba
+       NADA y el evento nunca se disparaba. Se cubren ambas formas. */
     document
-      .querySelectorAll('a[href*="play.google.com"], a[href*="apps.apple.com"]')
+      .querySelectorAll(
+        'a[href*="/dl/android"], a[href*="/dl/ios"], ' +
+          'a[href*="play.google.com"], a[href*="apps.apple.com"]',
+      )
       .forEach(function (a) {
         a.addEventListener("click", function () {
+          var android = /\/dl\/android|play\.google/.test(a.href);
           track("app_store_click", {
-            store:
-              a.href.indexOf("play.google") > -1 ? "google_play" : "app_store",
+            store: android ? "google_play" : "app_store",
             location: a.closest("section")
               ? a.closest("section").id || "unknown"
               : "nav",
@@ -190,14 +197,21 @@
         });
       });
 
-    /* Alta de negocio — la conversión de negocio. */
+    /* Intención de negocio — en esta landing el alta ocurre DENTRO de la
+       app, así que la señal medible es el clic a los CTA de negocio
+       (#businesses, "Start free today"). Renombrado a *_cta_click porque
+       "signup" prometía un alta que la web no puede observar. */
     document
       .querySelectorAll(
-        'a[href*="sign-up-business"], a[href*="registrar"], [data-cta="business"]',
+        'a[href*="#businesses"], a[href*="#download"], ' +
+          'a[href*="sign-up-business"], [data-cta="business"]',
       )
       .forEach(function (a) {
         a.addEventListener("click", function () {
-          track("business_signup_click");
+          track("business_cta_click", {
+            target: a.getAttribute("href") || "unknown",
+            label: (a.textContent || "").trim().slice(0, 40),
+          });
         });
       });
 
