@@ -84,6 +84,20 @@
             "value": "max-age=3600"
           }
         ]
+      },
+      {
+        "//": "El equivalente de Apple. El archivo NO lleva extensión (así lo exige Apple), así que sin este header Firebase lo sirve como octet-stream e iOS lo descarta en silencio: el App Link nunca se asocia y las invitaciones siguen abriendo Safari.",
+        "source": "/.well-known/apple-app-site-association",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600"
+          }
+        ]
       }
     ],
     "rewrites": [
