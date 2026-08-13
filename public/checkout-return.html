@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Foodly</title>
+  <style>
+    :root { --plum:#79005D; --plum-deep:#52003E; --green:#14C45D; --tint:#FFEEFB; --ink:#2B1024; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+      min-height:100vh; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(150deg,var(--plum-deep),var(--plum) 55%,#a3147f); padding:24px;
+    }
+    .card {
+      background:#fff; border-radius:24px; padding:36px 30px; max-width:420px; width:100%;
+      text-align:center; box-shadow:0 30px 80px rgba(27,16,21,.45);
+    }
+    .logo { height:42px; margin-bottom:18px; }
+    .mark { font-size:2.4rem; line-height:1; margin-bottom:14px; }
+    h1 { color:var(--ink); font-size:1.35rem; margin-bottom:8px; }
+    p { color:#6F5A66; font-size:.95rem; line-height:1.5; margin-bottom:18px; }
+    a.btn {
+      display:block; text-decoration:none; font-weight:700; border-radius:100px;
+      padding:14px 18px; margin-bottom:10px; transition:transform .15s;
+      background:linear-gradient(135deg,var(--plum-deep),var(--plum)); color:#fff;
+    }
+    a.btn:hover { transform:translateY(-2px); }
+    .hint { font-size:.8rem; color:#A49DBB; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img class="logo" src="/assets/logo.png" alt="Foodly" onerror="this.style.display='none'" />
+    <div class="mark" id="mark">·</div>
+    <h1 id="title"></h1>
+    <p id="body"></p>
+    <a class="btn" id="openApp" href="https://foodly.solutions/">Open Foodly</a>
+    <p class="hint" id="hint"></p>
+  </div>
+  <script>
+    // Página de rescate del Checkout hosteado.
+    //
+    // En el camino feliz NADIE la ve: el App Link devuelve al comensal a la app
+    // antes de que el navegador la pinte. Existe porque el deep link falla más
+    // de lo que uno espera (navegador in-app, link abierto en otro dispositivo,
+    // App Link todavía sin verificar) y sin fallback se aterriza en un 404
+    // justo después de pagar.
+    //
+    // NO afirma que el pago se completó. Quien sella el cobro es el webhook
+    // firmado; esta URL es adivinable y no está autenticada. Por eso el texto
+    // de éxito dice "lo estamos confirmando", no "pagado".
+    var COPY = {
+      en: {
+        success: ['✓', 'Almost there', 'We are confirming your payment. Open Foodly to see your table — the receipt appears there as soon as it clears.'],
+        cancel:  ['·', 'Payment not completed', 'Nothing was charged. Open Foodly to go back to your table and try again whenever you want.'],
+        hint: 'You can close this page.'
+      },
+      es: {
+        success: ['✓', 'Ya casi', 'Estamos confirmando tu pago. Abre Foodly para ver tu mesa: el recibo aparece ahí en cuanto se acredite.'],
+        cancel:  ['·', 'Pago no completado', 'No se cobró nada. Abre Foodly para volver a tu mesa e intentarlo cuando quieras.'],
+        hint: 'Puedes cerrar esta página.'
+      },
+      pt: {
+        success: ['✓', 'Quase lá', 'Estamos a confirmar o teu pagamento. Abre a Foodly para veres a tua mesa: o recibo aparece aí assim que for aceite.'],
+        cancel:  ['·', 'Pagamento não concluído', 'Não foi cobrado nada. Abre a Foodly para voltares à tua mesa e tentares quando quiseres.'],
+        hint: 'Podes fechar esta página.'
+      }
+    };
+
+    // /checkout/return/{success|cancel} — el rewrite de Firebase sirve esta
+    // página para los dos, así que el resultado se lee de la propia ruta.
+    var seg = location.pathname.split('/').filter(Boolean);
+    var result = seg[seg.length - 1] === 'success' ? 'success' : 'cancel';
+
+    var lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+    var copy = COPY[lang] || COPY.en;
+    var text = copy[result];
+
+    document.documentElement.lang = COPY[lang] ? lang : 'en';
+    document.getElementById('mark').textContent = text[0];
+    document.getElementById('title').textContent = text[1];
+    document.getElementById('body').textContent = text[2];
+    document.getElementById('hint').textContent = copy.hint;
+    document.title = text[1] + ' — Foodly';
+
+    // El mismo App Link: si la app está instalada, tocarlo la abre directo.
+    document.getElementById('openApp').href = 'https://foodly.solutions/checkout/return/' + result;
+  </script>
+</body>
+</html>

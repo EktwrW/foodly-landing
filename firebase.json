@@ -104,6 +104,11 @@
       {
         "source": "/join/**",
         "destination": "/join.html"
+      },
+      {
+        "//": "Retorno del Checkout hosteado. El AASA ya declaraba /checkout/return/*, pero no había página detrás: si el App Link no llegaba a abrir la app —navegador in-app, otro dispositivo, verificación aún pendiente— el comensal aterrizaba en un 404 justo después de pagar. La página lee success|cancel de la propia ruta.",
+        "source": "/checkout/return/**",
+        "destination": "/checkout-return.html"
       }
     ]
   }
