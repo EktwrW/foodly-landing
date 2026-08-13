@@ -86,7 +86,10 @@
     document.title = text[1] + ' — Foodly';
 
     // El mismo App Link: si la app está instalada, tocarlo la abre directo.
-    document.getElementById('openApp').href = 'https://foodly.solutions/checkout/return/' + result;
+    // Conserva el ?order= — es lo que la app usa para saber a qué mesa volver;
+    // sin él aterriza en el inicio y el comensal tiene que buscar su orden.
+    document.getElementById('openApp').href =
+      'https://foodly.solutions/checkout/return/' + result + location.search;
   </script>
 </body>
 </html>
