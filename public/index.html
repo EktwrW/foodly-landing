@@ -695,6 +695,134 @@
       .reveal { opacity: 1; transform: none; transition: none; }
       * { transition-duration: .01ms !important; }
     }
+  
+    /* ---------- Pedidos en vivo (#group-orders) ---------- */
+    #group-orders .section-head h2 em { font-style: normal; color: var(--green); }
+
+    .go-aud { display: flex; justify-content: center; margin: 0 0 44px; }
+    .go-seg {
+      display: flex; gap: 4px; padding: 5px; border-radius: 100px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
+      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    }
+    .go-seg button {
+      appearance: none; border: 0; cursor: pointer; font: inherit; font-weight: 700;
+      font-size: .93rem; color: rgba(255,255,255,.78); background: transparent;
+      padding: 11px 22px; border-radius: 100px; transition: background .2s, color .2s;
+    }
+    .go-seg button:hover { color: #fff; }
+    .go-seg button[aria-selected="true"] { background: var(--white); color: var(--plum); }
+    .go-seg button:focus-visible,
+    .go-step button:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+    /* El hueco crece con la pantalla en vez de quedarse en 56px: a partir de
+       ~1200px el teléfono y las tarjetas se pegaban y la columna de texto se
+       iba a ~85 caracteres por línea, más de lo cómodo. Fluido y no por
+       breakpoint, para que no haya un salto visible al cruzar un ancho. */
+    .go-flow { display: grid; grid-template-columns: 1fr 400px; gap: clamp(56px, 7vw, 104px); align-items: center; }
+    .go-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+    .go-steps[hidden] { display: none; }
+    .go-step button {
+      width: 100%; display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start;
+      text-align: left; appearance: none; cursor: pointer; font: inherit; color: inherit; position: relative;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.10);
+      /* Sin `backdrop-filter`. Detrás de estas tarjetas sólo hay degradados
+         lisos —los de .split y la cola ya desenfocada del halo del teléfono—,
+         así que el blur no desenfocaba nada: sólo forzaba una capa de
+         composición por tarjeta y un muestreo del fondo por baldosas. Con la
+         barra animando se repintaba cada fotograma y la costura pasaba por
+         ruido; al pausar quedaba fija y se leía como una veta vertical. */
+      border-radius: var(--radius, 20px); padding: 20px 22px; overflow: hidden;
+      transition: background .22s, border-color .22s, transform .22s;
+    }
+    .go-step button:hover { background: rgba(255,255,255,.09); transform: translateX(3px); }
+    .go-step.is-on button { background: rgba(255,255,255,.11); border-color: rgba(255,255,255,.24); }
+    .go-step .go-n {
+      width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: .95rem; background: rgba(255,255,255,.14); color: rgba(255,255,255,.75);
+      transition: background .22s, color .22s;
+    }
+    .go-step.is-on .go-n { background: var(--green); color: var(--white); }
+    .go-step .go-txt { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+    .go-step .go-txt strong { font-size: 1.06rem; font-weight: 700; letter-spacing: -.01em; }
+    .go-step .go-txt span { font-size: .94rem; line-height: 1.55; color: rgba(255,255,255,.74); }
+    .go-step .go-bar { position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: transparent; }
+    .go-step .go-bar i { display: block; height: 100%; width: 0; background: var(--green); }
+    .go-step.is-on .go-bar i { animation: go-avance 4200ms linear forwards; }
+    .go-flow:hover .go-step.is-on .go-bar i { animation-play-state: paused; }
+    @keyframes go-avance { from { width: 0 } to { width: 100% } }
+
+    /* Sin perspectiva. Una captura de interfaz no tolera `rotateY`: el texto se
+       vuelve trapecio y se lee como un defecto, no como profundidad. La
+       profundidad la dan el canto, la sombra en capas y la luz. */
+    .go-stage { position: relative; display: flex; justify-content: center; align-items: center; }
+    /* Halo elíptico, no circular: detrás de un teléfono alto un círculo deja el
+       brillo a media altura y se nota el corte. */
+    .go-stage::before {
+      content: ''; position: absolute; width: 152%; height: 104%; border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(198,106,166,.30), rgba(198,106,166,0) 66%);
+      filter: blur(16px); pointer-events: none;
+    }
+    .go-float { position: relative; animation: go-flota 7.5s ease-in-out infinite; will-change: transform; }
+    @keyframes go-flota { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-11px) } }
+
+    .go-phone {
+      position: relative; width: 318px; padding: 9px; border-radius: 46px;
+      background: linear-gradient(160deg,#3A2A34 0%,#120A0F 26%,#0D0709 74%,#332430 100%);
+      box-shadow:
+        0 2px 3px rgba(255,255,255,.12) inset,
+        0 -2px 3px rgba(0,0,0,.5) inset,
+        0 1px 2px rgba(0,0,0,.6),
+        0 18px 34px rgba(27,16,21,.34),
+        0 54px 90px rgba(27,16,21,.42);
+      transition: transform .9s cubic-bezier(.33,.9,.28,1); will-change: transform;
+    }
+    .go-phone.is-turning { transform: translateY(-5px) scale(1.014); }
+    .go-glass {
+      position: relative; width: 100%; aspect-ratio: 430/895; overflow: hidden;
+      border-radius: 38px; background: #170D13; box-shadow: 0 0 0 1px rgba(0,0,0,.55);
+    }
+    /* Solo escala, nunca desplazamiento. Con `contain` la imagen queda exacta al
+       cristal, así que cualquier translateY descubre el fondo por arriba — se veía
+       una franja clara sobre el appbar al cambiar de paso. Partiendo de una escala
+       mayor que 1 la imagen siempre cubre de sobra y no puede haber hueco. */
+    .go-scr {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block;
+      opacity: 0; transform: scale(1.028);
+      transition: opacity .58s cubic-bezier(.4,0,.2,1), transform .82s cubic-bezier(.33,.9,.28,1);
+    }
+    .go-scr.is-on { opacity: 1; transform: scale(1); }
+    .go-glass::after {
+      content: ''; position: absolute; inset: 0; border-radius: 38px; pointer-events: none; z-index: 2;
+      background: linear-gradient(118deg, rgba(255,255,255,.13) 0%, rgba(255,255,255,.03) 26%, rgba(255,255,255,0) 46%);
+    }
+    .go-side { position: absolute; right: -2px; width: 3px; border-radius: 3px; background: linear-gradient(180deg,#4A3743,#241820); }
+    .go-side.a { top: 124px; height: 62px; }
+    .go-side.b { top: 200px; height: 34px; }
+    .go-side.c { left: -2px; right: auto; top: 110px; height: 30px; }
+
+    #group-orders .split-note { margin: 46px auto 0; max-width: 70ch; line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .go-flow { grid-template-columns: 1fr; gap: 38px; }
+      .go-stage { order: -1; }
+      .go-phone { width: 258px; }
+      .go-phone.is-turning { transform: translateY(-4px) scale(1.012); }
+      .go-float { animation: none; }
+      .go-stage::before { width: 170%; height: 100%; }
+    }
+    /* Por debajo de ~520px las etiquetas del conmutador parten en dos líneas y
+       el control pierde la lectura de pastilla. Se estrechan en vez de partirse. */
+    @media (max-width: 520px) {
+      .go-seg { width: 100%; }
+      .go-seg button { flex: 1 1 0; padding: 11px 10px; font-size: .84rem; white-space: nowrap; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .go-float { animation: none; }
+      .go-phone, .go-phone.is-turning { transform: none; transition: none; }
+      .go-scr { transition: opacity .2s; transform: scale(1); }
+      .go-step.is-on .go-bar i { animation: none; width: 100%; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -894,28 +1022,113 @@
   <section class="split" id="group-orders">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="kicker">New · Group orders</span>
-        <h2>One table. One order. Everyone pays their share.</h2>
-        <p>Foodly's group orders end the awkward bill-splitting moment. Each guest adds their items, sees a transparent breakdown, and pays their own share — securely, from their own phone.</p>
+        <span class="kicker">Available now · Live orders</span>
+        <h2>One table. One order. <em>Everyone pays their share.</em></h2>
+        <p>For the people eating and the people serving — the same order, live, with nobody left waiting.</p>
       </div>
-      <div class="split-grid">
-        <div class="glass-step reveal" style="--d:.05s">
-          <div class="step-n">1</div>
-          <h3>Start a group order</h3>
-          <p>Anyone at the table opens the restaurant's menu in Foodly and starts a shared order. Friends join in a tap.</p>
-        </div>
-        <div class="glass-step reveal" style="--d:.15s">
-          <div class="step-n">2</div>
-          <h3>Everyone adds their items</h3>
-          <p>Each guest picks their own dishes and drinks. Share plates, cover a friend, split evenly or pay item by item — your table, your rules.</p>
-        </div>
-        <div class="glass-step reveal" style="--d:.25s">
-          <div class="step-n">3</div>
-          <h3>Pay your share, done</h3>
-          <p>Everyone pays their own part with a full breakdown shown before confirming — tip included if you like. The restaurant gets paid instantly.</p>
+
+      <div class="go-aud reveal" style="--d:.05s">
+        <div class="go-seg" role="tablist" aria-label="Audience">
+          <button type="button" role="tab" id="go-tab-comensal" data-aud="comensal"
+                  aria-selected="true" aria-controls="go-panel-comensal">For diners</button>
+          <button type="button" role="tab" id="go-tab-negocio" data-aud="negocio"
+                  aria-selected="false" aria-controls="go-panel-negocio">For your business</button>
         </div>
       </div>
-      <p class="split-note reveal">Payments are processed securely by <strong>Stripe</strong>. Every diner sees the exact amount — including the payment platform's small €0.25 processing fee — <strong>before</strong> paying. No surprises, for anyone.</p>
+
+      <div class="go-flow reveal" style="--d:.1s">
+        <ol class="go-steps" data-aud="comensal" id="go-panel-comensal" role="tabpanel"
+            aria-labelledby="go-tab-comensal">
+          <li class="go-step is-on" data-i="0">
+            <button type="button" aria-current="true">
+              <span class="go-n">1</span>
+              <span class="go-txt"><strong>Join with a QR</strong><span>One of you opens the order and everyone else joins with the QR or the code on screen. If the table has its own numbered QR, the order comes in already tagged to it.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+          <li class="go-step" data-i="1">
+            <button type="button" aria-current="false">
+              <span class="go-n">2</span>
+              <span class="go-txt"><strong>Order together</strong><span>Everyone adds what they want from their own phone. You watch the order grow live, and see who ordered what.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+          <li class="go-step" data-i="2">
+            <button type="button" aria-current="false">
+              <span class="go-n">3</span>
+              <span class="go-txt"><strong>Split it however you like</strong><span>By item, so everyone pays their own, or evenly. If you want to treat the table, you pay it all in the next step.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+          <li class="go-step" data-i="3">
+            <button type="button" aria-current="false">
+              <span class="go-n">4</span>
+              <span class="go-txt"><strong>Pay your share</strong><span>Card or your local payment method, with the exact amount in view — fees included — before you confirm.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+        </ol>
+        <ol class="go-steps" data-aud="negocio" id="go-panel-negocio" role="tabpanel"
+            aria-labelledby="go-tab-negocio" hidden>
+          <li class="go-step" data-i="0">
+            <button type="button" aria-current="false">
+              <span class="go-n">1</span>
+              <span class="go-txt"><strong>Choose how you charge</strong><span>An open tab, where the table orders in rounds and pays once at the end. Or prepaid per round, for counters and food trucks.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+          <li class="go-step" data-i="1">
+            <button type="button" aria-current="false">
+              <span class="go-n">2</span>
+              <span class="go-txt"><strong>Print your QR</strong><span>One code for the counter, or one per table, already numbered and ready to print.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+          <li class="go-step" data-i="2">
+            <button type="button" aria-current="false">
+              <span class="go-n">3</span>
+              <span class="go-txt"><strong>Orders arrive live</strong><span>You get a notification on every order, with the table identified and the payment status in view.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+          <li class="go-step" data-i="3">
+            <button type="button" aria-current="false">
+              <span class="go-n">4</span>
+              <span class="go-txt"><strong>Prepare and deliver</strong><span>You tick off each item as it leaves the kitchen. The table follows its order without asking.</span></span>
+              <span class="go-bar"><i></i></span>
+            </button>
+          </li>
+        </ol>
+        <!-- El teléfono ilustra lo que los pasos ya dicen en texto; para un
+             lector de pantalla sería ruido repetido, de ahí el aria-hidden. -->
+        <div class="go-stage" aria-hidden="true">
+          <div class="go-float">
+            <div class="go-phone">
+              <span class="go-side c"></span><span class="go-side a"></span><span class="go-side b"></span>
+              <div class="go-glass">
+            <img class="go-scr is-on" data-aud="comensal" data-i="0" alt=""
+                 src="/assets/go-en-mesa.webp" width="430" height="895">
+            <img class="go-scr" data-aud="comensal" data-i="1" alt=""
+                 src="/assets/go-en-pedido.webp" width="430" height="895" loading="lazy" decoding="async">
+            <img class="go-scr" data-aud="comensal" data-i="2" alt=""
+                 src="/assets/go-en-dividir.webp" width="430" height="895" loading="lazy" decoding="async">
+            <img class="go-scr" data-aud="comensal" data-i="3" alt=""
+                 src="/assets/go-en-pagar.webp" width="430" height="895" loading="lazy" decoding="async">
+            <img class="go-scr" data-aud="negocio" data-i="0" alt=""
+                 src="/assets/go-en-cobro.webp" width="430" height="895" loading="lazy" decoding="async">
+            <img class="go-scr" data-aud="negocio" data-i="1" alt=""
+                 src="/assets/go-en-qr.webp" width="430" height="895" loading="lazy" decoding="async">
+            <img class="go-scr" data-aud="negocio" data-i="2" alt=""
+                 src="/assets/go-en-vivo.webp" width="430" height="895" loading="lazy" decoding="async">
+            <img class="go-scr" data-aud="negocio" data-i="3" alt=""
+                 src="/assets/go-en-entregar.webp" width="430" height="895" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="split-note reveal" style="--d:.15s">Payments are processed by <strong>Stripe</strong>. Whoever pays sees the exact amount — including the €0.25 payment-platform fee — <strong>before</strong> confirming. Anyone who prefers pays at the counter.</p>
     </div>
   </section>
 
@@ -1294,6 +1507,61 @@
           }
         });
       }
+    })();
+  
+    /* Pedidos en vivo: conmutador de audiencia + avance automático */
+    (function () {
+      var sec = document.getElementById('group-orders');
+      if (!sec) return;
+      var DUR = 4200;
+      var tabs = sec.querySelectorAll('.go-seg button');
+      var phone = sec.querySelector('.go-phone');
+      var scrs = sec.querySelectorAll('.go-scr');
+      var aud = 'comensal', i = 0, timer = null, parado = false;
+
+      function pasos() { return sec.querySelectorAll('.go-steps[data-aud="' + aud + '"] .go-step'); }
+
+      function pinta() {
+        pasos().forEach(function (li, k) {
+          li.classList.toggle('is-on', k === i);
+          li.querySelector('button').setAttribute('aria-current', k === i ? 'true' : 'false');
+        });
+        scrs.forEach(function (im) {
+          im.classList.toggle('is-on', im.dataset.aud === aud && +im.dataset.i === i);
+        });
+        phone.classList.add('is-turning');
+        clearTimeout(phone._t);
+        phone._t = setTimeout(function () { phone.classList.remove('is-turning'); }, 560);
+      }
+
+      function arranca() {
+        clearInterval(timer);
+        if (parado) return;
+        timer = setInterval(function () { i = (i + 1) % pasos().length; pinta(); }, DUR);
+      }
+
+      tabs.forEach(function (b) {
+        b.addEventListener('click', function () {
+          aud = b.dataset.aud;
+          tabs.forEach(function (o) { o.setAttribute('aria-selected', o === b ? 'true' : 'false'); });
+          sec.querySelectorAll('.go-steps').forEach(function (ol) {
+            if (ol.dataset.aud === aud) { ol.removeAttribute('hidden'); } else { ol.setAttribute('hidden', ''); }
+          });
+          i = 0; pinta(); arranca();
+        });
+      });
+
+      sec.addEventListener('click', function (e) {
+        var li = e.target.closest('.go-step');
+        if (!li || !sec.contains(li)) return;
+        i = +li.dataset.i; pinta(); arranca();
+      });
+
+      var flow = sec.querySelector('.go-flow');
+      flow.addEventListener('mouseenter', function () { parado = true; clearInterval(timer); });
+      flow.addEventListener('mouseleave', function () { parado = false; arranca(); });
+
+      arranca();
     })();
   </script>
   <script src="/assets/analytics.js" defer></script>
