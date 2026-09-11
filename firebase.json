@@ -29,7 +29,7 @@
         ]
       },
       {
-        "source": "/@(es|pt|privacy|terms)",
+        "source": "/@(es|pt|privacy|terms|argentina)",
         "headers": [
           {
             "key": "Cache-Control",

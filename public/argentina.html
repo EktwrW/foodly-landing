@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foodly Argentina — Digitaliza tu negocio gastronómico, gratis</title>
+  <meta name="description" content="Menú con QR por mesa, pedidos en vivo, reservas, promociones con IA y analíticas. Gratis, sin mensualidades ni contratos. En Argentina, hoy con cobro en caja; pagos en la app previstos para octubre de 2026.">
+  <!-- Página de venta para Argentina: se comparte por link, no se indexa (queda fuera del sitemap y del clúster hreflang). -->
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#52003E">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Foodly">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:url" content="https://foodly.solutions/argentina">
+  <meta property="og:title" content="Foodly Argentina — Digitaliza tu negocio gastronómico, gratis">
+  <meta property="og:description" content="Menú con QR por mesa, pedidos en vivo, reservas, promociones con IA y analíticas. Gratis, sin mensualidades ni contratos. En Argentina, hoy con cobro en caja; pagos en la app previstos para octubre de 2026.">
+  <meta property="og:image" content="https://foodly.solutions/assets/ar/og-argentina.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Foodly: Digitaliza tu negocio gastronómico. Gratis.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Foodly Argentina — Digitaliza tu negocio gastronómico, gratis">
+  <meta name="twitter:description" content="Menú con QR por mesa, pedidos en vivo, reservas, promociones con IA y analíticas. Gratis, sin mensualidades ni contratos. En Argentina, hoy con cobro en caja; pagos en la app previstos para octubre de 2026.">
+  <meta name="twitter:image" content="https://foodly.solutions/assets/ar/og-argentina.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap">
+  <style>
+  :root{
+    --purple-deep:#52003E; --purple:#79005D; --purple-bright:#7E005E; --rose:#C66AA6;
+    --green:#14C45D; --green-ink:#0F9E4A;
+    --ink:#150D12; --text:#2B1826; --muted:#6F5A69;
+    --paper:#FBF7FA; --paper-2:#F4EAF1; --card:#FFFFFF; --line:rgba(82,0,62,.12);
+    --on-purple:#FFFFFF; --on-purple-soft:rgba(255,255,255,.78);
+    --radius:24px; --gutter:clamp(16px,5vw,32px);
+    --font:'Outfit','SF Pro Rounded',ui-rounded,'Segoe UI',system-ui,-apple-system,sans-serif;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--text);font-family:var(--font);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.08;text-wrap:balance}
+  p{margin:0}
+  .wrap{max-width:1080px;margin-inline:auto;padding-inline:var(--gutter)}
+  section{padding-block:clamp(56px,8vw,104px)}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);margin-bottom:14px}
+  .on-purple .eyebrow{color:var(--green)}
+  .accent{color:var(--green-ink)}
+  .on-purple .accent{color:var(--green)}
+  .h2{font-size:clamp(30px,4.4vw,46px);color:var(--purple-deep);max-width:16ch}
+  .on-purple .h2{color:var(--on-purple)}
+  .lead{font-size:clamp(17px,1.9vw,20px);color:var(--muted);max-width:60ch;margin-top:18px}
+  .on-purple .lead{color:var(--on-purple-soft)}
+  .on-purple{background:linear-gradient(180deg,var(--purple-deep) 0%,var(--purple-bright) 100%);color:var(--on-purple)}
+  .paper-2{background:var(--paper-2)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding-block:clamp(36px,5vw,64px) 0}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,56px);align-items:center}
+  .hero-copy{padding-bottom:clamp(40px,6vw,80px)}
+  .logo{height:clamp(34px,4vw,44px);width:auto;margin-bottom:clamp(28px,4vw,44px)}
+  .hero h1{font-size:clamp(40px,6.2vw,72px);font-weight:800;color:var(--on-purple);max-width:12ch}
+  .hero .lead{max-width:44ch}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+  .pill{font-size:13px;font-weight:600;letter-spacing:.02em;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.10);color:var(--on-purple)}
+  .pill.green{background:var(--green);border-color:var(--green);color:#fff;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+  .badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .badges a{display:inline-block;border-radius:10px;transition:transform .2s}
+  .badges a:hover{transform:translateY(-2px)}
+  .badges img{height:48px;width:auto}
+  .hero-device{position:relative;height:clamp(400px,46vw,620px);overflow:hidden}
+  .hero-device::before{content:"";position:absolute;left:50%;top:38%;width:130%;height:110%;transform:translate(-50%,-40%);background:radial-gradient(closest-side,rgba(198,106,166,.62),rgba(198,106,166,0) 72%);pointer-events:none}
+  .hero-device .phone{position:absolute;left:50%;top:0;transform:translateX(-50%);width:min(320px,74vw);max-width:none}
+
+  /* ---------- phone frame ---------- */
+  .phone{width:100%;max-width:260px;padding:8px;border-radius:38px;background:var(--ink);box-shadow:0 36px 70px -24px rgba(21,13,18,.55),0 0 0 1px rgba(255,255,255,.06) inset}
+  .phone .screen{border-radius:30px;overflow:hidden;aspect-ratio:1170/2532;background:#fff}
+  .phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .phone.wide .screen{aspect-ratio:540/1320}
+
+  /* ---------- chips ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+  .chip{font-size:14px;font-weight:600;color:var(--purple-deep);background:var(--card);border:1px solid var(--line);padding:9px 16px;border-radius:999px}
+
+  /* ---------- features ---------- */
+  .grid{display:grid;gap:18px;margin-top:40px}
+  .grid.features{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .feature{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;display:flex;flex-direction:column;gap:14px;transition:transform .25s,box-shadow .25s}
+  .feature:hover{transform:translateY(-3px);box-shadow:0 24px 48px -30px rgba(82,0,62,.35)}
+  .feature .icon{width:46px;height:46px;border-radius:14px;background:rgba(198,106,166,.16);display:grid;place-items:center;color:var(--purple)}
+  .feature .icon svg{width:24px;height:24px}
+  .feature h3{font-size:19px;color:var(--purple-deep)}
+  .feature p{font-size:15.5px;color:var(--muted);line-height:1.5}
+
+  /* ---------- trio (CM) ---------- */
+  .trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-top:44px;align-items:start}
+  .trio figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
+  .trio .phone{max-width:230px}
+  .trio h3{font-size:19px;color:var(--purple-deep)}
+  .trio p{font-size:15px;color:var(--muted);max-width:30ch;margin-top:6px}
+
+  /* ---------- slides strip ---------- */
+  .strip-wrap{margin-top:36px;margin-inline:calc(-1 * var(--gutter))}
+  .strip{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px var(--gutter) 28px;scrollbar-width:thin;scrollbar-color:var(--rose) transparent}
+  .strip img{flex:0 0 auto;width:236px;aspect-ratio:1290/2796;border-radius:24px;scroll-snap-align:start;box-shadow:0 26px 50px -26px rgba(82,0,62,.55);border:1px solid rgba(255,255,255,.35)}
+  .strip-hint{font-size:13px;color:var(--muted);margin-top:4px;display:flex;align-items:center;gap:8px}
+  .strip-hint svg{width:16px;height:16px}
+
+  /* ---------- flow ---------- */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 22px;margin-top:44px}
+  .step{display:flex;flex-direction:column;gap:16px}
+  .step .phone{max-width:230px}
+  .step .num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--purple-deep);color:#fff;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+  .step h3{font-size:20px;color:var(--purple-deep)}
+  .step p{font-size:15.5px;color:var(--muted);line-height:1.5}
+
+  /* ---------- argentina ---------- */
+  .timeline{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+  .tcard{background:var(--card);color:var(--text);border-radius:var(--radius);padding:30px 28px;display:flex;flex-direction:column;gap:20px;position:relative}
+  .tcard .when{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple)}
+  .tcard .when::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(20,196,93,.18)}
+  .tcard.next .when::before{background:var(--rose);box-shadow:0 0 0 4px rgba(198,106,166,.22)}
+  .tcard h3{font-size:clamp(24px,2.6vw,30px);color:var(--purple-deep)}
+  .zeros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .zero{background:var(--paper-2);border-radius:16px;padding:14px 12px;text-align:center}
+  .zero b{display:block;font-size:clamp(26px,3vw,34px);font-weight:800;color:var(--purple-deep);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .zero span{display:block;font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.25}
+  .checks{display:flex;flex-direction:column;gap:12px;padding:0;margin:0;list-style:none}
+  .checks li{display:flex;gap:12px;font-size:15.5px;line-height:1.5;color:var(--text)}
+  .checks li::before{content:"";flex:0 0 22px;height:22px;margin-top:2px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/13px no-repeat}
+  .tcard.next .checks li::before{background-color:var(--purple)}
+  .tcard .fine{font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:auto}
+  .quote{margin-top:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:18px 22px;font-size:15.5px;color:var(--on-purple-soft);max-width:70ch}
+  .quote b{color:var(--on-purple);font-weight:600}
+
+  /* ---------- start ---------- */
+  .start{display:grid;grid-template-columns:1fr minmax(240px,300px);gap:clamp(28px,5vw,64px);align-items:center;margin-top:36px}
+  .start ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px;counter-reset:s}
+  .start li{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start}
+  .start li::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:34px;font-weight:800;color:var(--rose);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;padding-top:2px}
+  .start h3{font-size:19px;color:var(--purple-deep);margin-bottom:4px}
+  .start p{font-size:15.5px;color:var(--muted);line-height:1.5}
+  .start .phone{margin-inline:auto;max-width:280px}
+  .callout{margin-top:40px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--green);border-radius:18px;padding:20px 24px;font-size:16px;color:var(--text);max-width:70ch}
+  .callout b{color:var(--purple-deep);font-weight:700}
+
+  /* ---------- faq ---------- */
+  .faq{max-width:760px;margin-top:28px;border-top:1px solid var(--line)}
+  .faq details{border-bottom:1px solid var(--line)}
+  .faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-size:18px;font-weight:600;color:var(--purple-deep)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";flex:0 0 28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--paper-2);color:var(--purple);font-weight:600;font-size:20px;line-height:1;transition:transform .2s}
+  .faq details[open] summary::after{content:"–"}
+  .faq summary:focus-visible{outline:3px solid var(--rose);outline-offset:4px;border-radius:8px}
+  .faq .a{padding:0 0 22px;font-size:16px;color:var(--muted);line-height:1.55;max-width:64ch}
+
+  /* ---------- cta ---------- */
+  .cta{text-align:center}
+  .cta .h2{margin-inline:auto;max-width:18ch}
+  .cta .lead{margin-inline:auto}
+  .cta .badges{justify-content:center}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--purple-deep);font-weight:700;text-decoration:none;padding:14px 22px;border-radius:999px;margin-top:22px;transition:transform .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn svg{width:18px;height:18px}
+  footer{padding:28px 0 40px;font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:center}
+  footer img{height:22px;width:auto;opacity:.9}
+
+  a:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:8px}
+
+  @media (max-width:820px){
+    .hero .wrap{grid-template-columns:1fr}
+    .hero-copy{padding-bottom:8px}
+    .hero h1{max-width:14ch}
+    .hero-device{height:min(440px,110vw)}
+    .timeline{grid-template-columns:1fr}
+    .start{grid-template-columns:1fr}
+    .start .phone{order:-1}
+  }
+  @media (max-width:480px){
+    .zeros{grid-template-columns:1fr 1fr 1fr;gap:6px}
+    .zero{padding:12px 6px}
+    .strip img{width:200px}
+    .badges img{height:44px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+<!-- ============ HERO ============ -->
+<header class="hero on-purple">
+  <div class="wrap">
+    <div class="hero-copy">
+      <img class="logo" src="/assets/ar/logo-white.png" alt="Foodly" width="640" height="211">
+      <div class="eyebrow">Para restaurantes, bares, cafés, food trucks y caterings</div>
+      <h1>Digitaliza tu negocio gastronómico. <span class="accent">Gratis.</span></h1>
+      <p class="lead">Menú con QR por mesa, pedidos en vivo, reservas, promociones con IA y analíticas. Todo en una sola app, sin mensualidades ni contratos.</p>
+      <div class="pills">
+        <span class="pill green">Ya disponible en Argentina</span>
+        <span class="pill">Sin mensualidades</span>
+        <span class="pill">Sin costo de alta</span>
+        <span class="pill">Sin contratos</span>
+      </div>
+      <div class="badges">
+        <a href="https://apps.apple.com/ar/app/id6761689908" target="_blank" rel="noopener"><img src="/assets/ar/badge-app-store-es.png" alt="Descargar en el App Store" width="810" height="240"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.foodlysolutions.app" target="_blank" rel="noopener"><img src="/assets/ar/badge-google-play-es.png" alt="Disponible en Google Play" width="930" height="240"></a>
+      </div>
+    </div>
+    <div class="hero-device" aria-hidden="true">
+      <figure class="phone"><div class="screen"><img src="/assets/ar/shot-dashboard.webp" alt=""></div></figure>
+    </div>
+  </div>
+</header>
+
+<!-- ============ QUÉ ES ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Qué es Foodly</div>
+    <h2 class="h2">Una sola app para <span class="accent">todo</span> lo que pasa en tu local.</h2>
+    <p class="lead">Tus clientes escanean el QR de su mesa, ven el menú en el celular y piden. Tú ves cada pedido entrar en vivo, gestionas reservas y promociones, y mides lo que funciona, desde tu teléfono y sin instalar nada en el local. Hecho para todo tipo de negocio gastronómico:</p>
+    <div class="chips">
+      <span class="chip">Restaurantes</span><span class="chip">Bares</span><span class="chip">Cafés</span><span class="chip">Pizzerías</span><span class="chip">Food trucks</span><span class="chip">Caterings</span><span class="chip">Chefs privados</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="paper-2">
+  <div class="wrap">
+    <div class="eyebrow">Todo lo que incluye</div>
+    <h2 class="h2">Ocho herramientas, <span class="accent">cero</span> mensualidad.</h2>
+    <div class="grid features">
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM20 14v1M17 20h4M14 20h1"/></svg></div>
+        <h3>Menú digital con QR</h3>
+        <p>Un QR para la barra o uno por cada mesa, ya numerado. Cambias un precio y el QR muestra el nuevo al instante, sin reimprimir nada.</p>
+      </article>
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></div>
+        <h3>Carga tu menú con IA</h3>
+        <p>Subes fotos de tu carta y la IA extrae ítems, categorías y precios. Revisas, confirmas y el menú queda listo en minutos.</p>
+      </article>
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16M6 10l1 10h10l1-10M12 4v6M8 7l4-3 4 3"/></svg></div>
+        <h3>Pedidos desde la mesa</h3>
+        <p>Cuenta abierta: la mesa pide en tandas y paga una vez al final. Con los pagos en la app, también prepago por ronda. Tú eliges cómo cobra tu negocio.</p>
+      </article>
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></div>
+        <h3>Órdenes en vivo</h3>
+        <p>Cada pedido entra al instante con su número de mesa y una notificación push. Las marcas como preparando, listas o entregadas.</p>
+      </article>
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M8 15l2.5 2.5L16 13"/></svg></div>
+        <h3>Reservas y presupuestos</h3>
+        <p>Reservas de mesa con confirmación, y solicitudes de servicio con presupuesto para caterings y chefs. Todo en un solo lugar.</p>
+      </article>
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1 1 0 0 0 1 1h3l6 4V5L8 9H5a1 1 0 0 0-1 1z"/><path d="M17 9a4 4 0 0 1 0 6M8 15l1 5"/></svg></div>
+        <h3>Promociones con IA</h3>
+        <p>Genera título, subtítulo y descripción de la promo con un clic, y hazla visible para quienes buscan dónde comer cerca de tu local.</p>
+      </article>
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></div>
+        <h3>Analíticas en tiempo real</h3>
+        <p>Visitas, reservas, tendencias diarias y el embudo de conversión de tu negocio, para saber qué funcionó y qué no.</p>
+      </article>
+      <article class="feature">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6-5.2-6-11a6 6 0 0 1 12 0c0 5.8-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg></div>
+        <h3>Visibilidad local</h3>
+        <p>Tu perfil, con fotos, horarios y dirección, aparece a quienes buscan por categoría y distancia en la app.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARA QUIEN LLEVA LA COMUNICACIÓN ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Si llevas la comunicación del local</div>
+    <h2 class="h2">Tres pantallas que te ahorran <span class="accent">trabajo</span>.</h2>
+    <p class="lead">Foodly no reemplaza tu Instagram: lo complementa con lo que una red social no hace. Un menú siempre actualizado, promociones que llegan a quien está cerca y números para saber qué funcionó.</p>
+    <div class="trio">
+      <figure>
+        <div class="phone wide"><div class="screen"><img src="/assets/ar/shot-menu.webp" alt="Menú digital de un negocio en Foodly, con fotos y precios por ítem"></div></div>
+        <figcaption><h3>El menú, siempre al día</h3><p>Fotos, descripciones y precios que editas desde el celular. El QR impreso nunca queda viejo.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="phone wide"><div class="screen"><img src="/assets/ar/shot-promo-ai.webp" alt="Generador de promociones con IA en Foodly"></div></div>
+        <figcaption><h3>Promos en un clic</h3><p>Escribes la idea, la IA redacta la promo. Con fecha, días válidos y una imagen promocional.</p></figcaption>
+      </figure>
+      <figure>
+        <div class="phone wide"><div class="screen"><img src="/assets/ar/shot-analytics.webp" alt="Panel de analíticas de Foodly con tendencias diarias y embudo de conversión"></div></div>
+        <figcaption><h3>Lo que funcionó, con datos</h3><p>Visitas al negocio, toques de contacto, reservas iniciadas y completadas, en ventanas de 7, 30, 90 o 180 días.</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section class="paper-2">
+  <div class="wrap">
+    <div class="eyebrow">La app</div>
+    <h2 class="h2">Así se ve en las <span class="accent">tiendas</span>.</h2>
+    <p class="lead">Las mismas pantallas que verás en el App Store y Google Play. Capturas de la app en Portugal, por eso los importes están en euros: en Argentina los precios se muestran en pesos.</p>
+    <div class="strip-wrap">
+      <div class="strip" role="list">
+        <img role="listitem" src="/assets/ar/slide-01.webp" alt="Digitaliza tu negocio, gratis. Sin mensualidades ni contratos.">
+        <img role="listitem" src="/assets/ar/slide-02.webp" alt="Un código QR para cada mesa.">
+        <img role="listitem" src="/assets/ar/slide-03.webp" alt="Reservas y presupuestos, en un lugar.">
+        <img role="listitem" src="/assets/ar/slide-04.webp" alt="Promociones que te dan visibilidad.">
+        <img role="listitem" src="/assets/ar/slide-05.webp" alt="Analíticas en tiempo real, con IA.">
+        <img role="listitem" src="/assets/ar/slide-06.webp" alt="Hecho para todo tipo de negocio.">
+        <img role="listitem" src="/assets/ar/slide-07.webp" alt="Reserva mesa en solo unos toques.">
+        <img role="listitem" src="/assets/ar/slide-08.webp" alt="Pidan juntos. Dividan sin cuentas.">
+        <img role="listitem" src="/assets/ar/slide-09.webp" alt="Los pedidos entran en tiempo real.">
+        <img role="listitem" src="/assets/ar/slide-10.webp" alt="Pide desde la mesa. Divide la cuenta. Sin esperar.">
+      </div>
+    </div>
+    <p class="strip-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>Desliza para ver las diez pantallas</p>
+  </div>
+</section>
+
+<!-- ============ EN LA MESA ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Así funciona en la mesa</div>
+    <h2 class="h2">Del QR a la caja, en <span class="accent">cuatro</span> pasos.</h2>
+    <p class="lead">Así opera hoy un negocio en Argentina con Foodly: el pedido viaja por la app y el cobro se hace en tu caja, como siempre.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="phone"><div class="screen"><img src="/assets/ar/shot-qr.webp" alt="Pantalla de Foodly para descargar el código QR del negocio, uno por mesa"></div></div>
+        <span class="num">1</span>
+        <h3>Escanean el QR de su mesa</h3>
+        <p>Se abre el menú del local. Con la app Foodly, la orden ya nace con el número de mesa: nadie tiene que decirlo ni anotarlo.</p>
+      </div>
+      <div class="step">
+        <div class="phone"><div class="screen"><img src="/assets/ar/shot-order-live.webp" alt="Orden en vivo en Foodly con varios participantes y el total por persona"></div></div>
+        <span class="num">2</span>
+        <h3>Piden juntos, cada uno desde su celular</h3>
+        <p>Todos ven la misma orden en vivo: quién pidió qué y cuánto suma cada parte. La cocina la recibe al instante.</p>
+      </div>
+      <div class="step">
+        <div class="phone"><div class="screen"><img src="/assets/ar/shot-orders-push.webp" alt="Órdenes en vivo del negocio en Foodly con una notificación push de nueva orden"></div></div>
+        <span class="num">3</span>
+        <h3>Tú lo ves entrar al instante</h3>
+        <p>Notificación push con el importe y la mesa. Marcas cada pedido como preparando, listo o entregado y la mesa lo ve.</p>
+      </div>
+      <div class="step">
+        <div class="phone"><div class="screen"><img src="/assets/ar/shot-close-cash.webp" alt="Pantalla de Foodly para cerrar una cuenta cobrada en caja, sin comisión"></div></div>
+        <span class="num">4</span>
+        <h3>Cobras en caja y cierras la cuenta</h3>
+        <p>La mesa avisa que paga en caja; tú confirmas el cobro y la cuenta se cierra. Foodly no procesa ese pago y no cobra nada por él.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARGENTINA ============ -->
+<section class="on-purple">
+  <div class="wrap">
+    <div class="eyebrow">Argentina</div>
+    <h2 class="h2">Cómo lo hacemos en Argentina, <span class="accent">hoy</span>.</h2>
+    <p class="lead">Todavía no sumamos un medio de pago dentro de la app para Argentina: estamos eligiendo el procesador que más convenga en comisiones, seguridad, eficiencia y escalabilidad. Mientras tanto, te habilitamos la app completa para operar con cobro en caja.</p>
+    <div class="timeline">
+      <article class="tcard">
+        <div class="when">Hoy · septiembre 2026</div>
+        <h3>La app completa, gratis, con cobro en caja.</h3>
+        <div class="zeros">
+          <div class="zero"><b>$0</b><span>de alta</span></div>
+          <div class="zero"><b>$0</b><span>por mes</span></div>
+          <div class="zero"><b>$0</b><span>sobre lo cobrado en caja</span></div>
+        </div>
+        <ul class="checks">
+          <li>Menú con QR, pedidos desde la mesa, órdenes en vivo, reservas, promociones con IA y analíticas: todo habilitado.</li>
+          <li>Cobras en tu caja como siempre: efectivo, tarjeta o el QR que ya uses. Foodly no interviene en ese pago.</li>
+          <li>Sin contrato ni permanencia. Si no te sirve, dejas de usarlo y listo.</li>
+        </ul>
+        <p class="fine">Lo que armes ahora (menú, QR, reservas, promos, historial) queda tal cual cuando lleguen los pagos en la app.</p>
+      </article>
+      <article class="tcard next">
+        <div class="when">Previsto · octubre 2026</div>
+        <h3>Llegan los pagos dentro de la app.</h3>
+        <ul class="checks">
+          <li>Cada comensal paga lo suyo desde su celular, o dividen la cuenta en partes iguales. Sin calculadora y sin esperar.</li>
+          <li>Prepago por ronda para barra, mostrador y food trucks: cada pedido se paga antes de prepararse. O cuenta abierta, que se paga una vez al final.</li>
+          <li>Comisión solo sobre lo que los clientes paguen a través de Foodly. Lo que se siga cobrando en caja no tiene costo.</li>
+        </ul>
+        <p class="fine">El procesador y la comisión se comunican antes del lanzamiento, y pagar en la app es opcional: la caja sigue disponible.</p>
+      </article>
+    </div>
+    <p class="quote"><b>Por qué conviene entrar ahora:</b> el menú, los QR impresos, las reservas y las promociones ya están funcionando el día que se activen los pagos. El cambio es un botón más para tus clientes, no un proyecto nuevo.</p>
+  </div>
+</section>
+
+<!-- ============ EMPEZAR ============ -->
+<section class="paper-2">
+  <div class="wrap">
+    <div class="eyebrow">Puesta en marcha</div>
+    <h2 class="h2">Empezar toma <span class="accent">minutos</span>, no semanas.</h2>
+    <div class="start">
+      <ol>
+        <li><div><h3>Descarga Foodly y crea la cuenta de tu negocio</h3><p>Fotos, categoría, dirección y horarios. Con eso tu local ya aparece a quienes buscan cerca.</p></div></li>
+        <li><div><h3>Carga el menú con fotos de tu carta</h3><p>La IA extrae ítems, categorías y precios; tú revisas. Si prefieres, lo cargas a mano.</p></div></li>
+        <li><div><h3>Elige cómo cobra tu negocio</h3><p>Hoy en Argentina: cuenta abierta, con cobro en caja al final. También marcas si sirves en mesa. El prepago por ronda llega con los pagos en la app.</p></div></li>
+        <li><div><h3>Descarga e imprime los QR</h3><p>Uno para la barra o uno por mesa, ya numerados. Pegado en la mesa, listo.</p></div></li>
+        <li><div><h3>Activa reservas y publica tu primera promo</h3><p>Desde el mismo panel. A partir de ahí, las analíticas empiezan a contar.</p></div></li>
+      </ol>
+      <div class="phone"><div class="screen"><img src="/assets/ar/shot-how-charge.webp" alt="Diálogo de Foodly para elegir cómo cobra el negocio: cuenta abierta o prepago por ronda"></div></div>
+    </div>
+    <div class="callout"><b>Te acompañamos en la puesta en marcha.</b> Si llevas varios locales, los montamos uno por uno contigo: menú, QR y primera promo, el mismo día.</div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Preguntas frecuentes</div>
+    <h2 class="h2">Lo que suelen <span class="accent">preguntar</span>.</h2>
+    <div class="faq">
+      <details open>
+        <summary>¿Mis clientes tienen que instalar algo?</summary>
+        <div class="a">Para ver el menú, no: el QR lo abre en el navegador del celular. Para pedir desde la mesa, ver la orden en vivo y, desde octubre, pagar y dividir la cuenta, usan la app Foodly, gratis en App Store y Google Play.</div>
+      </details>
+      <details>
+        <summary>¿Cuánto cuesta?</summary>
+        <div class="a">Hoy en Argentina, nada: sin costo de alta, sin mensualidad y sin contrato, y lo que cobres en caja no tiene costo. Cuando lancemos los pagos dentro de la app, habrá una comisión solo sobre lo que los clientes paguen a través de Foodly; el procesador y la comisión se comunican antes del lanzamiento.</div>
+      </details>
+      <details>
+        <summary>Ya tengo la carta en PDF, en Instagram o en una web.</summary>
+        <div class="a">Perfecto, sigue usándolos. La diferencia es lo que pasa después de mirar la carta: con Foodly la mesa pide, la cocina recibe el pedido al instante y tú sabes qué se vendió. Y si cambias un precio, el QR ya muestra el nuevo.</div>
+      </details>
+      <details>
+        <summary>No tengo tiempo para cargar todo.</summary>
+        <div class="a">Con fotos de tu carta, la IA arma el menú y tú solo revisas. El resto (perfil, QR, primera promo) lo montamos contigo el mismo día.</div>
+      </details>
+      <details>
+        <summary>Ya uso un sistema de caja o POS.</summary>
+        <div class="a">Sigue usándolo. Foodly se ocupa de lo que pasa antes de la caja: el menú, el pedido desde la mesa y la orden en vivo. El cobro lo haces donde y como siempre.</div>
+      </details>
+      <details>
+        <summary>¿Sirve para catering o chef a domicilio?</summary>
+        <div class="a">Sí. Los negocios de catering y chefs privados tienen su propia categoría en la app, reciben solicitudes de servicio y gestionan el presupuesto desde el mismo panel.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="on-purple cta">
+  <div class="wrap">
+    <div class="eyebrow">Empecemos</div>
+    <h2 class="h2">Tu local en Foodly, esta misma <span class="accent">semana</span>.</h2>
+    <p class="lead">Descarga la app, crea la cuenta de tu negocio y te ayudamos con el resto.</p>
+    <div class="badges">
+      <a href="https://apps.apple.com/ar/app/id6761689908" target="_blank" rel="noopener"><img src="/assets/ar/badge-app-store-es.png" alt="Descargar en el App Store" width="810" height="240"></a>
+      <a href="https://play.google.com/store/apps/details?id=com.foodlysolutions.app" target="_blank" rel="noopener"><img src="/assets/ar/badge-google-play-es.png" alt="Disponible en Google Play" width="930" height="240"></a>
+    </div>
+    <a class="btn" href="https://foodly.solutions" target="_blank" rel="noopener">foodly.solutions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <img src="/assets/ar/logo-purple.png" alt="Foodly" width="640" height="211">
+    <span>Foodly Solutions · Disponible en Portugal, Argentina y Venezuela · Capturas reales de la app, versión de Portugal.</span>
+  </footer>
+</div>
+</body>
+</html>
